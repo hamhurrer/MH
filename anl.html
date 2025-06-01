@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>心理评估</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+    <div class="container mx-auto px-4 py-8 max-w-3xl">
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">心理状态评估</h2>
+            <p class="text-gray-600 mb-6">点击下方按钮，分析您的历史内容并获取心理状态评估</p>
+            
+            <button id="assessBtn" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 flex items-center">
+                <i class="fa fa-bar-chart mr-2"></i> 获取评估结果
+            </button>
+        </div>
+
+        <div id="resultSection" class="bg-white rounded-xl shadow-lg p-6 hidden">
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">评估结果</h3>
+            <div id="loadingIndicator" class="text-center py-8 hidden">
+                <i class="fa fa-circle-o-notch fa-spin text-blue-500 text-3xl"></i>
+                <p class="text-gray-500 mt-2">正在分析数据，请稍候...</p>
+            </div>
+            <div id="resultContent" class="hidden">
+                <div class="mb-4">
+                    <h4 class="font-medium text-gray-700">心理评分：<span id="score" class="text-blue-600"></span></h4>
+                </div>
+                <div id="analysis" class="space-y-3"></div>
+            </div>
+            <div id="errorMessage" class="text-red-500 hidden"></div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const assessBtn = document.getElementById('assessBtn');
+            const resultSection = document.getElementById('resultSection');
+            const loadingIndicator = document.getElementById('loadingIndicator');
+            const resultContent = document.getElementById('resultContent');
+            const errorMessage = document.getElementById('errorMessage');
+            const scoreElement = document.getElementById('score');
+            const analysisElement = document.getElementById('analysis');
+
+            assessBtn.addEventListener('click', function() {
+                // 显示结果区域和加载指示器
+                resultSection.classList.remove('hidden');
+                loadingIndicator.classList.remove('hidden');
+                resultContent.classList.add('hidden');
+                errorMessage.classList.add('hidden');
+                assessBtn.disabled = true;
+                assessBtn.classList.add('opacity-50', 'cursor-not-allowed');
+
+                // 使用POST方式发送请求，与pbzs.html保持一致
+                const formData = new FormData();
+                formData.append('action', 'get_assessment');
+
+                fetch('../files/assessment.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => {
+                    console.log('响应状态:', response.status);
+                    
+                    if (!response.ok) {
+                        throw new Error(`HTTP错误，状态码: ${response.status}`);
+                    }
+                    
+                    return response.text().then(text => {
+                        try {
+                            if (text.trim() === '') {
+                                throw new Error('服务器返回空内容');
+                            }
+                            
+                            const data = JSON.parse(text);
+                            return data;
+                        } catch (err) {
+                            console.error('服务器返回非JSON格式:', text);
+                            
+                            const errorMatch = text.match(/<title>(.*?)<\/title>/i);
+                            const errorMsg = errorMatch ? errorMatch[1] : '服务器返回格式错误';
+                            
+                            throw new Error(errorMsg);
+                        }
+                    });
+                })
+                .then(data => {
+                    loadingIndicator.classList.add('hidden');
+                    assessBtn.disabled = false;
+                    assessBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                    
+                    if (data.status === 'error') {
+                        // 显示错误信息
+                        errorMessage.innerHTML = `
+                            <div class="text-red-600 font-medium mb-3">${data.message}</div>
+                        `;
+                        
+                        // 显示详细调试信息
+                        if (data.debug_info) {
+                            const debugHtml = `
+                                <div class="mt-4 p-4 bg-red-50 border border-red-200 rounded">
+                                    <h5 class="font-medium text-red-800 mb-2">详细错误信息:</h5>
+                                    <div class="space-y-2 text-sm">
+                                        <div><strong>CURL错误码:</strong> ${data.debug_info.curl_errno || '无'}</div>
+                                        <div><strong>CURL错误:</strong> ${data.debug_info.curl_error || '无'}</div>
+                                        <div><strong>HTTP状态码:</strong> ${data.debug_info.http_code || '无'}</div>
+                                        <div><strong>响应长度:</strong> ${data.debug_info.response_length || 0} 字符</div>
+                                        <div><strong>API URL:</strong> ${data.debug_info.api_url || '无'}</div>
+                                        <div><strong>时间:</strong> ${data.debug_info.timestamp || '无'}</div>
+                                    </div>
+                                    
+                                    ${data.debug_info.user_data_summary ? `
+                                        <div class="mt-3">
+                                            <strong>用户数据统计:</strong>
+                                            <div class="ml-4 text-sm">
+                                                <div>评论数量: ${data.debug_info.user_data_summary.comments_count}</div>
+                                                <div>情绪记录数量: ${data.debug_info.user_data_summary.moods_count}</div>
+                                                <div>帖子数量: ${data.debug_info.user_data_summary.posts_count}</div>
+                                            </div>
+                                        </div>
+                                    ` : ''}
+                                    
+                                    ${data.debug_info.prompt_sent ? `
+                                        <div class="mt-3">
+                                            <strong>发送给API的Prompt:</strong>
+                                            <pre class="mt-1 p-2 bg-gray-100 rounded text-xs overflow-x-auto max-h-40 overflow-y-auto">${data.debug_info.prompt_sent}</pre>
+                                        </div>
+                                    ` : ''}
+                                    
+                                    ${data.debug_info.request_data ? `
+                                        <div class="mt-3">
+                                            <strong>请求数据:</strong>
+                                            <pre class="mt-1 p-2 bg-gray-100 rounded text-xs overflow-x-auto max-h-40 overflow-y-auto">${JSON.stringify(data.debug_info.request_data, null, 2)}</pre>
+                                        </div>
+                                    ` : ''}
+                                    
+                                    ${data.debug_info.response_raw ? `
+                                        <div class="mt-3">
+                                            <strong>原始响应:</strong>
+                                            <pre class="mt-1 p-2 bg-gray-100 rounded text-xs overflow-x-auto max-h-40 overflow-y-auto">${data.debug_info.response_raw}</pre>
+                                        </div>
+                                    ` : ''}
+                                </div>
+                            `;
+                            errorMessage.innerHTML += debugHtml;
+                        }
+                        
+                        errorMessage.classList.remove('hidden');
+                    } else if (data.status === 'success') {
+                        // 处理评估结果
+                        scoreElement.textContent = data.score || 'API响应';
+                        
+                        // 显示分析内容
+                        analysisElement.innerHTML = '';
+                        
+                        // 显示用户数据统计
+                        if (data.debug_info && data.debug_info.user_data_summary) {
+                            const userDataDiv = document.createElement('div');
+                            userDataDiv.className = 'mb-4 p-4 bg-purple-50 border border-purple-200 rounded';
+                            userDataDiv.innerHTML = `
+                                <h5 class="font-medium text-purple-800 mb-2">分析的用户数据:</h5>
+                                <div class="text-sm text-purple-700 space-y-1">
+                                    <div>📝 评论数量: ${data.debug_info.user_data_summary.comments_count}</div>
+                                    <div>😊 情绪记录数量: ${data.debug_info.user_data_summary.moods_count}</div>
+                                    <div>📄 帖子数量: ${data.debug_info.user_data_summary.posts_count}</div>
+                                </div>
+                                
+                                ${data.debug_info.user_data_summary.comments.length > 0 ? `
+                                    <details class="mt-2">
+                                        <summary class="cursor-pointer text-sm font-medium">查看评论内容</summary>
+                                        <div class="mt-2 text-xs bg-white p-2 rounded border max-h-20 overflow-y-auto">
+                                            ${data.debug_info.user_data_summary.comments.map(comment => `<div class="mb-1">• ${comment}</div>`).join('')}
+                                        </div>
+                                    </details>
+                                ` : ''}
+                                
+                                ${data.debug_info.user_data_summary.moods.length > 0 ? `
+                                    <details class="mt-2">
+                                        <summary class="cursor-pointer text-sm font-medium">查看情绪记录</summary>
+                                        <div class="mt-2 text-xs bg-white p-2 rounded border max-h-20 overflow-y-auto">
+                                            ${data.debug_info.user_data_summary.moods.map(mood => `<div class="mb-1">• [${mood.type}] ${mood.description}</div>`).join('')}
+                                        </div>
+                                    </details>
+                                ` : ''}
+                                
+                                ${data.debug_info.user_data_summary.posts.length > 0 ? `
+                                    <details class="mt-2">
+                                        <summary class="cursor-pointer text-sm font-medium">查看帖子内容</summary>
+                                        <div class="mt-2 text-xs bg-white p-2 rounded border max-h-20 overflow-y-auto">
+                                            ${data.debug_info.user_data_summary.posts.map(post => `<div class="mb-1">• ${post.content} ${post.tags ? `[标签:${post.tags}]` : ''}</div>`).join('')}
+                                        </div>
+                                    </details>
+                                ` : ''}
+                            `;
+                            analysisElement.appendChild(userDataDiv);
+                        }
+                        
+                        // 显示发送给API的Prompt
+                        if (data.debug_info && data.debug_info.prompt_sent) {
+                            const promptDiv = document.createElement('div');
+                            promptDiv.className = 'mb-4 p-4 bg-indigo-50 border border-indigo-200 rounded';
+                            promptDiv.innerHTML = `
+                                <h5 class="font-medium text-indigo-800 mb-2">发送给AI的完整Prompt:</h5>
+                                <pre class="text-xs bg-white p-3 rounded border overflow-x-auto max-h-40 overflow-y-auto whitespace-pre-wrap">${data.debug_info.prompt_sent}</pre>
+                            `;
+                            analysisElement.appendChild(promptDiv);
+                        }
+                        
+                        // 显示AI分析结果
+                        if (data.analysis && data.analysis !== '未找到有效内容') {
+                            const analysisDiv = document.createElement('div');
+                            analysisDiv.className = 'mb-4 p-4 bg-green-50 border border-green-200 rounded';
+                            analysisDiv.innerHTML = `
+                                <h5 class="font-medium text-green-800 mb-2">AI心理分析结果:</h5>
+                                <div class="text-green-700 whitespace-pre-wrap">${data.analysis}</div>
+                            `;
+                            analysisElement.appendChild(analysisDiv);
+                        }
+                        
+                        // 显示完整的API响应
+                        if (data.debug_info && data.debug_info.response_raw) {
+                            const apiDiv = document.createElement('div');
+                            apiDiv.className = 'mb-4 p-4 bg-gray-50 border border-gray-200 rounded';
+                            apiDiv.innerHTML = `
+                                <details>
+                                    <summary class="cursor-pointer font-medium text-gray-800 mb-2">查看SSE原始响应</summary>
+                                    <pre class="text-xs bg-white p-3 rounded border overflow-x-auto max-h-60 overflow-y-auto mt-2">${data.debug_info.response_raw}</pre>
+                                </details>
+                            `;
+                            analysisElement.appendChild(apiDiv);
+                        }
+                        
+                        // 显示SSE事件示例
+                        if (data.sse_events_sample) {
+                            const sseDiv = document.createElement('div');
+                            sseDiv.className = 'mb-4 p-4 bg-orange-50 border border-orange-200 rounded';
+                            sseDiv.innerHTML = `
+                                <details>
+                                    <summary class="cursor-pointer font-medium text-orange-800 mb-2">查看SSE流式事件示例</summary>
+                                    <div class="mt-2 text-xs bg-white p-3 rounded border max-h-40 overflow-y-auto">
+                                        ${data.sse_events_sample.map((event, index) => `
+                                            <div class="mb-2 p-2 border rounded">
+                                                <div><strong>事件 ${index + 1}:</strong> ${event.event}</div>
+                                                <div class="mt-1 text-gray-600">${event.data}</div>
+                                            </div>
+                                        `).join('')}
+                                    </div>
+                                </details>
+                            `;
+                            analysisElement.appendChild(sseDiv);
+                        }
+                        
+                        // 显示技术调试信息
+                        if (data.debug_info) {
+                            const debugDiv = document.createElement('div');
+                            debugDiv.className = 'p-4 bg-yellow-50 border border-yellow-200 rounded';
+                            debugDiv.innerHTML = `
+                                <details>
+                                    <summary class="cursor-pointer font-medium text-yellow-800 mb-2">查看技术调试信息</summary>
+                                    <div class="space-y-2 text-sm mt-2">
+                                        <div><strong>HTTP状态码:</strong> ${data.debug_info.http_code}</div>
+                                        <div><strong>响应长度:</strong> ${data.debug_info.response_length} 字符</div>
+                                        <div><strong>时间:</strong> ${data.debug_info.timestamp}</div>
+                                        <div><strong>执行步骤:</strong> ${data.debug_info.step}</div>
+                                        <div><strong>提取的内容:</strong> ${data.extracted_content ? '是(' + data.extracted_content.length + '字符)' : '否'}</div>
+                                        <div><strong>SSE事件数量:</strong> ${data.debug_info.sse_events_count || 0}</div>
+                                        <div><strong>提取内容长度:</strong> ${data.debug_info.extracted_content_length || 0} 字符</div>
+                                        ${data.debug_info.last_answer_content ? `<div><strong>最后answer内容:</strong> ${data.debug_info.last_answer_content.substring(0, 100)}...</div>` : ''}
+                                    </div>
+                                </details>
+                            `;
+                            analysisElement.appendChild(debugDiv);
+                        }
+                        
+                        resultContent.classList.remove('hidden');
+                    } else {
+                        errorMessage.innerHTML = `
+                            <div class="text-red-600 font-medium mb-3">系统返回格式异常</div>
+                            <div class="mt-4 p-4 bg-gray-50 border rounded">
+                                <h5 class="font-medium mb-2">原始返回数据:</h5>
+                                <pre class="text-xs overflow-x-auto">${JSON.stringify(data, null, 2)}</pre>
+                            </div>
+                        `;
+                        errorMessage.classList.remove('hidden');
+                    }
+                })
+                .catch(error => {
+                    loadingIndicator.classList.add('hidden');
+                    assessBtn.disabled = false;
+                    assessBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                    errorMessage.textContent = '请求失败: ' + error.message;
+                    errorMessage.classList.remove('hidden');
+                    console.error('Error:', error);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

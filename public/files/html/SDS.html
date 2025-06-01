@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SDS-抑郁自评量表</title>
+    <style>
+        body {
+            background: linear-gradient(to bottom right,#fdfcfb,#e2d1c3);
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 0px 30px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            z-index: 100;
+            margin: 0;
+        }
+
+        .Home a {
+            padding: 6px 15px;
+            color: #6D8485;
+            border-radius: 20px;
+            margin: 0 10px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .Home a:hover {
+            background: #6D8485;
+            color: #fff;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-top: 20px;
+        }
+
+        form {
+            background: linear-gradient(to bottom right,#fdfcfb,#e2d1c3);
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			display: grid;
+            gap: 10px;
+        }
+
+       .question {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+        #answers{
+            padding: 20px;
+            display:inline-flex;
+        }
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #result {
+            background-color: #fff;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h2 class="Home"><a href="psych.html">Back</a></h2>
+    </header>
+    <h1>SDS - 抑郁自评量表</h1>
+    <form id="sdsForm">
+        <div class="question">
+            <label>1. 我觉得比平常容易紧张和着急</label>
+            <div id="answers">
+            <input type="radio" name="q1" value="1"> 没有或很少时间<br>
+            <input type="radio" name="q1" value="2"> 小部分时间<br>
+            <input type="radio" name="q1" value="3"> 相当多时间<br>
+            <input type="radio" name="q1" value="4"> 绝大部分或全部时间<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>2. 我无缘无故地感到害怕</label>
+            <div id="answers">
+            <input type="radio" name="q1" value="1"> 没有或很少时间<br>
+            <input type="radio" name="q1" value="2"> 小部分时间<br>
+            <input type="radio" name="q1" value="3"> 相当多时间<br>
+            <input type="radio" name="q1" value="4"> 绝大部分或全部时间<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>3. 我一阵阵哭出来或觉得想哭</label>
+            <div id="answers">
+            <input type="radio" name="q3" value="1"> 没有或很少时间<br>
+            <input type="radio" name="q3" value="2"> 小部分时间<br>
+            <input type="radio" name="q3" value="3"> 相当多时间<br>
+            <input type="radio" name="q3" value="4"> 绝大部分或全部时间<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>4. 我晚上睡眠不好</label>
+            <div id="answers">
+            <input type="radio" name="q4" value="1"> 没有或很少时间<br>
+            <input type="radio" name="q4" value="2"> 小部分时间<br>
+            <input type="radio" name="q4" value="3"> 相当多时间<br>
+            <input type="radio" name="q4" value="4"> 绝大部分或全部时间<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>5. 我吃得跟平常一样多</label>
+            <div id="answers">
+            <input type="radio" name="q5" value="4"> 没有或很少时间<br>
+            <input type="radio" name="q5" value="3"> 小部分时间<br>
+            <input type="radio" name="q5" value="2"> 相当多时间<br>
+            <input type="radio" name="q5" value="1"> 绝大部分或全部时间<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>6. 我与异性密切接触时和以往一样感到愉快</label>
+            <div id="answers">
+            <input type="radio" name="q6" value="4"> 没有或很少时间<br>
+            <input type="radio" name="q6" value="3"> 小部分时间<br>
+            <input type="radio" name="q6" value="2"> 相当多时间<br>
+            <input type="radio" name="q6" value="1"> 绝大部分或全部时间<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>7. 我发觉我的体重在下降</label>
+            <div id="answers">
+            <input type="radio" name="q7" value="1"> 没有或很少时间<br>
+            <input type="radio" name="q7" value="2"> 小部分时间<br>
+            <input type="radio" name="q7" value="3"> 相当多时间<br>
+            <input type="radio" name="q7" value="4"> 绝大部分或全部时间<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>8. 我有便秘的苦恼</label>
+            <div id="answers">
+            <input type="radio" name="q8" value="1"> 没有或很少时间<br>
+            <input type="radio" name="q8" value="2"> 小部分时间<br>
+            <input type="radio" name="q8" value="3"> 相当多时间<br>
+            <input type="radio" name="q8" value="4"> 绝大部分或全部时间<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>9. 我心跳比平常快</label>
+            <div id="answers">
+            <input type="radio" name="q9" value="1"> 没有或很少时间<br>
+            <input type="radio" name="q9" value="2"> 小部分时间<br>
+            <input type="radio" name="q9" value="3"> 相当多时间<br>
+            <input type="radio" name="q9" value="4"> 绝大部分或全部时间<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>10. 我无缘无故地感到疲乏</label>
+            <div id="answers">
+            <input type="radio" name="q10" value="1"> 没有或很少时间<br>
+            <input type="radio" name="q10" value="2"> 小部分时间<br>
+            <input type="radio" name="q10" value="3"> 相当多时间<br>
+            <input type="radio" name="q10" value="4"> 绝大部分或全部时间<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>11. 我的头脑跟平常一样清楚</label>
+            <div id="answers">
+            <input type="radio" name="q11" value="4"> 没有或很少时间<br>
+            <input type="radio" name="q11" value="3"> 小部分时间<br>
+            <input type="radio" name="q11" value="2"> 相当多时间<br>
+            <input type="radio" name="q11" value="1"> 绝大部分或全部时间<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>12. 我觉得经常做的事情并没有困难</label>
+            <div id="answers">
+            <input type="radio" name="q12" value="4"> 没有或很少时间<br>
+            <input type="radio" name="q12" value="3"> 小部分时间<br>
+            <input type="radio" name="q12" value="2"> 相当多时间<br>
+            <input type="radio" name="q12" value="1"> 绝大部分或全部时间<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>13. 我觉得不安而平静不下来</label>
+            <div id="answers">
+            <input type="radio" name="q13" value="1"> 没有或很少时间<br>
+            <input type="radio" name="q13" value="2"> 小部分时间<br>
+            <input type="radio" name="q13" value="3"> 相当多时间<br>
+            <input type="radio" name="q13" value="4"> 绝大部分或全部时间<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>14. 我对将来抱有希望</label>
+            <div id="answers">
+            <input type="radio" name="q14" value="4"> 没有或很少时间<br>
+            <input type="radio" name="q14" value="3"> 小部分时间<br>
+            <input type="radio" name="q14" value="2"> 相当多时间<br>
+            <input type="radio" name="q14" value="1"> 绝大部分或全部时间<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>15. 我比平常容易生气激动</label>
+            <div id="answers">
+            <input type="radio" name="q15" value="1"> 没有或很少时间<br>
+            <input type="radio" name="q15" value="2"> 小部分时间<br>
+            <input type="radio" name="q15" value="3"> 相当多时间<br>
+            <input type="radio" name="q15" value="4"> 绝大部分或全部时间<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>16. 我觉得作出决定是容易的</label>
+            <div id="answers">
+            <input type="radio" name="q16" value="4"> 没有或很少时间<br>
+            <input type="radio" name="q16" value="3"> 小部分时间<br>
+            <input type="radio" name="q16" value="2"> 相当多时间<br>
+            <input type="radio" name="q16" value="1"> 绝大部分或全部时间<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>17. 我觉得自己是个有用的人，有人需要我</label>
+            <div id="answers">
+            <input type="radio" name="q17" value="4"> 没有或很少时间<br>
+            <input type="radio" name="q17" value="3"> 小部分时间<br>
+            <input type="radio" name="q17" value="2"> 相当多时间<br>
+            <input type="radio" name="q17" value="1"> 绝大部分或全部时间<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>18. 我的生活过得很有意思</label>
+            <div id="answers">
+            <input type="radio" name="q18" value="4"> 没有或很少时间<br>
+            <input type="radio" name="q18" value="3"> 小部分时间<br>
+            <input type="radio" name="q18" value="2"> 相当多时间<br>
+            <input type="radio" name="q18" value="1"> 绝大部分或全部时间<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>19. 我认为如果我死了别人会生活得好些</label>
+            <div id="answers">
+            <input type="radio" name="q19" value="1"> 没有或很少时间<br>
+            <input type="radio" name="q19" value="2"> 小部分时间<br>
+            <input type="radio" name="q19" value="3"> 相当多时间<br>
+            <input type="radio" name="q19" value="4"> 绝大部分或全部时间<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>20. 平常感兴趣的事我仍然照样感兴趣</label>
+            <div id="answers">
+            <input type="radio" name="q20" value="4"> 没有或很少时间<br>
+            <input type="radio" name="q20" value="3"> 小部分时间<br>
+            <input type="radio" name="q20" value="2"> 相当多时间<br>
+            <input type="radio" name="q20" value="1"> 绝大部分或全部时间<br>
+            </div>
+        </div>
+
+        <button type="button" onclick="calculateScore()">提交</button>
+    </form>
+    <div id="result"></div>
+    <script>
+        function calculateScore() {
+            const form = document.getElementById('sdsForm');
+            let score = 0;
+            for (let i = 1; i <= 20; i++) {
+                const question = `q${i}`;
+                const selectedOption = form.querySelector(`input[name="${question}"]:checked`);
+                if (selectedOption) {
+                    score += parseInt(selectedOption.value);
+                } else {
+                    alert(`请回答问题 ${i}`);
+                    return;
+                }
+            }
+            let assessment = '';
+            if (score <= 40) {
+                assessment = '你的心理健康状况良好，目前没有明显的抑郁症状困扰。建议继续保持健康的生活方式和积极的心态。';
+            } else if (score <= 50) {
+                assessment = '你可能存在一些轻微的抑郁症状，不过不用过于担心。可以尝试通过适当的放松活动，如运动、听音乐等来缓解。';
+            } else if (score <= 60) {
+                assessment = '你目前的心理状态可能存在一定程度的抑郁问题，建议你多关注自己的情绪变化，也可以与身边信任的人交流沟通。若情况持续或加重，建议寻求专业心理咨询师的帮助。';
+            } else {
+                assessment = '你可能存在较为严重的抑郁症状，建议尽快寻求专业心理咨询师或心理医生的帮助，以便进行更详细的评估和诊断。';
+            }
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = `你的得分是：${score} 分。<br>${assessment}`;
+        }
+    </script>
+</body>
+
+</html>

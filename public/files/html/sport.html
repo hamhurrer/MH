@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+	<title>运动</title>
+    <style>
+			header {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				padding: 0px 30px;
+				display: flex;
+				justify-content: flex-start;
+				align-items: center;
+				z-index: 100;
+				margin: 0; 
+			}
+
+			.Home a{
+				padding: 6px 15px;
+                color:#f9a633;
+				border-radius: 20px;
+				margin: 0 10px;
+				font-weight: 600;
+				text-decoration: none;
+			}
+			.Home a:hover{
+				background:#f9a633;
+    			color: #fff;
+			}
+
+        body {
+            margin: 0;
+            width: 100vw;
+            height: auto;
+            background: radial-gradient(ellipse at top left, #f9eec0 0%, #f9eec0 30%, #ddebf2 100%);
+        }
+
+        .box {
+            width: 1200px;
+            margin: auto;
+            padding-top: 80px;
+        }
+
+        .box>.title {
+            display: flex;
+            justify-content: space-around; 
+            margin-bottom: 50px;
+        }
+
+        .box>.title>.item {
+            background: radial-gradient(ellipse at top left, #ddebf2 0%, #ddebf2 30%, #f9eec0 100%);
+            height: 80px;
+            width: 20%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 28px;
+            box-shadow: 0 0 10px #fff;
+            cursor: pointer;
+        }
+
+        .box>.title>.item>img {
+            width: 70px;
+            height: 70px;
+            border-radius: 100%;
+            transition: .5s;
+            object-fit: cover;
+        }
+
+        .box>.title>.item>span {
+            color: #fff;
+            font-size: 18px;
+            letter-spacing: 5px;
+            margin-right: 10px;
+            font-weight: bold;
+            transition: .5s;
+        }
+
+        .box>.title>.checked {
+           background: radial-gradient(ellipse at top left, #ddebf2 0%, #ddebf2 30%, #f9eec0 100%);
+            box-shadow: 0 0 28px #fff;
+        }
+
+        .box>.title>.checked>span {
+            margin-right: 35px;
+        }
+
+        .box>.title>.checked>img {
+            transform: scale(1.5);
+        }
+
+        .content {
+            background-color: rgba(255, 255, 255, .5);
+            height: 0;
+            padding: 0;
+            overflow: hidden;
+            border-radius: 30px;
+            color: #5b4913;
+            opacity: 0;
+            transition: .5s;
+        }
+
+        .che {
+            opacity: 1;
+            height: auto;
+            padding: 20px;
+        }
+
+        .content>.smallTit {
+            font-size: 20px;
+
+        }
+
+        .content>h1 {
+            font-size: 50px;
+            margin: 20px 0;
+        }
+
+        .content>.body {
+            font-size: 18px;
+            line-height: 2;
+            text-align: justify;
+        }
+
+        .imgList {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        .imgList>img {
+            width: 47%;
+            height: 330px;
+            object-fit: cover;
+            border-radius: 30px;
+        }
+        .text-box {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            padding: 15px;
+            margin-top: 20px;
+            font-size: 16px;
+            line-height: 1.6;
+            word-wrap: break-word;
+        }
+        .text-box a {
+            text-decoration: none;
+            color: #5b4913;
+        }
+    </style>
+</head>
+
+<body>
+	<header>
+       	<h2 class="Home"><a href="../../index.php">Home</a></h2>
+	</header>
+    <div class="box">
+        <div class="title">
+            <div class="item">
+                <span>RUN</span>
+                <img src="../image/run.jfif" alt="" />
+            </div>
+            <div class="item checked">
+                <span>SWIM</span>
+                <img src="../image/swim2.jfif" alt="" />
+            </div>
+            <div class="item ">
+                <span>YOGA</span>
+                <img src="../image/yoga2.jfif" alt="" />
+            </div>
+        </div>
+        <div class="content">
+            <div class="smallTit">Sprinting Towards Sunshine 用脚步向往阳光</div>
+            <h1>跑步</h1>
+            <div class="body">
+                慢跑是重寻内心力量的有力方式。当脚步有节奏地敲击地面，身体在匀速运动中，血液循环加速，新陈代谢效率提高。慢跑能促使身体分泌内啡肽，这种被誉为 “快乐荷尔蒙” 的物质能有效改善情绪，驱散失恋带来的阴霾，带来愉悦感与轻松感。在慢跑过程中，我们可放空思绪，将对失败恋情的痛苦转化为前进动力，每一次奔跑都是向过去告别，向新生迈进，逐渐恢复内心的积极与自信。
+            </div>
+            <div class="imgList">
+                <img src="../image/run1.jpg" alt="">
+                <img src="../image/run2.jpg" alt="">
+            </div>
+			<div class="text-box"> <a href="https://www.thejoyrun.com/">Click for more to teach you how to run healthily</a>
+        </div>
+        </div>
+        <div class="content che">
+            <div class="smallTit">Diving into Tranquility 身心沉浸于宁静</div>
+            <h1>游泳</h1>
+            <div class="body">
+                游泳为人们打造了一个静谧的疗愈空间。置身水中，身体被水温柔托举，重力影响大幅减轻，关节与肌肉在近乎无压力状态下舒展，能深度放松身心。游泳时，规律的呼吸与划水动作协调配合，能调节神经系统，使精神从失恋的困扰中解脱，进入宁静平和状态。同时，游泳带来的适度疲劳感有助于改善睡眠问题，让我们拥有更充足的休息，以饱满精神应对新生活，在一次次畅游中，找回内心的宁静与平衡。
+            </div>
+            <div class="imgList">
+                <img src="../image/swim1.jpg" alt="">
+                <img src="../image/swim2.jpg" alt="">
+            </div>
+			<div class="text-box"> <a href="https://www.bilibili.com/video/BV1yE411Z78L/?spm_id_from=333.337.search-card.all.click">Click for more to teach you how to swim safely</a></div>
+        </div>
+        <div class="content">
+            <div class="smallTit">Unlocking Inner Peace Through Asanas 身心和谐的治愈之法</div>
+            <h1>瑜伽</h1>
+            <div class="body">
+                瑜伽宛如一泓清泉，能滋润干涸的心灵。在一系列体式的伸展与扭转间，身体的每一块肌肉都得到深度拉伸，有效缓解因失恋压力紧绷的肌肉群，释放身体的紧张感。同时，专注于呼吸与体式的配合，能让思绪从纷繁复杂的低落情绪中抽离，将注意力聚焦当下，内心逐渐平静，焦虑、悲伤等负面情绪在平和的心境中慢慢消散。长期坚持瑜伽练习，有助于重新建立身心的和谐，提升自我觉察能力，开启自我疗愈之旅。
+            </div>
+            <div class="imgList">
+                <img src="../image/yoga1.jpg" alt="">
+                <img src="../image/yoga2.jpg" alt="">
+            </div>
+			<div class="text-box">  <a href="https://www.bilibili.com/video/BV1rF4m1A7KG/?spm_id_from=333.337.search-card.all.click">Click for more to teach you how to do basic yoga</a></div>
+        </div>
+        </div>
+        <!-- 删除最后一个内容 -->
+    </div>
+    <script>
+        let titlist = document.querySelectorAll('.title>.item');
+        let conlist = document.querySelectorAll('.content');
+        for (let i = 0; i < titlist.length; i++) {
+            titlist[i].onclick = function () {
+                clear();
+                titlist[i].classList.add('checked');
+                conlist[i].classList.add('che');
+            }
+        }
+
+        function clear() {
+            for (let i = 0; i < titlist.length; i++) {
+                titlist[i].classList.remove('checked');
+                conlist[i].classList.remove('che');
+            }
+        }
+    </script>
+</body>
+
+</html>

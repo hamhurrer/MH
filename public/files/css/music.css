@@ -1,0 +1,152 @@
+@charset "utf-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px 100px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    z-index: 100;
+    margin: 0; 
+}
+
+.home-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-right: 15rem;
+}
+
+.home-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.home-btn::before {
+    content: "←";
+    font-size: 16px;
+    font-weight: bold;
+}
+.navigation a {
+    text-decoration: none;
+    color:#f1939c;
+    padding: 6px 15px;
+    margin: 0 10px;
+    font-weight: 600;
+}
+
+.navigation a:hover,
+.navigation a.active {
+    background:#f1939c;
+    color: #fff;
+    border-radius: 20px;
+}  
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* 设置背景图片 */
+    background: radial-gradient(ellipse at top left, #f3dee5 0%, #f3dee5 30%, #c4d4df 100%);
+    /* 让背景图片覆盖整个页面 */
+   
+}
+
+/* 上方文字框样式 */
+.top-text-box {
+    font-size: 40px;
+    /* 修改文字颜色，添加透明度 */
+    color: rgba(255, 255, 255, 1); 
+    /* 调节字体格式示例 */
+    font-family: Verdana;
+    margin-bottom: 20px;
+    text-align: justify; /* 修改为两端对齐 */
+    text-align-last: justify;
+    width: auto; /* 让文字框宽度自适应文字长度 */
+}
+
+.container {
+    position: relative;
+    display: flex;
+    width: 100vw;
+    height: 400px;
+}
+
+.card {
+    position: absolute;
+    width: 200px;
+    aspect-ratio: 3/4;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+    font-size: 8em;
+    font-weight: 900;
+    line-height: 300px;
+    text-align: center;
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.3);
+    margin: 0 5px;
+    left: 50%;
+    top: 50%;
+    transform: rotate(calc(var(--i) * 5deg)) translate(-50%, -50%);
+    transform-origin: 0 0;
+    transition: 0.5s calc(var(--i) * 0.3s) ease;
+    /* 确保图片完整显示在卡片内 */
+    background-size: contain;
+    /* 图片居中显示 */
+    background-position: center;
+    /* 防止图片重复 */
+    background-repeat: no-repeat;
+}
+
+.card:nth-child(even) {
+    transform: rotate(calc(var(--i) * -5deg)) translate(-50%, -50%);
+}
+
+.container:hover .card {
+    transform-origin: center center;
+    transform: rotate(calc(var(--i) * 0deg)) translate(-400%, -50%) translateX(calc(var(--i) * 115%));
+    transition-delay: calc(var(--i) * 0s);
+    font-size: 9em;
+    line-height: 300px;
+    color: transparent;
+    -webkit-text-stroke: 6px rgba(0, 0, 0, 0.5);
+    -webkit-box-reflect: below 4px linear-gradient(to bottom, transparent 80%, rgba(0, 0, 0, 0.5));
+}
+
+.container:hover .card:not(:hover) {
+    font-size: 8em;
+    line-height: 200px;
+    -webkit-text-stroke: 3px rgba(252, 254, 254, 0.8);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+/* 下方文字框样式 */
+.bottom-text-box {
+    font-size: 24px;
+    /* 修改文字颜色，添加透明度 */
+    color: #7C93B7; 
+    margin-top: 20px;
+    text-align: justify;
+    width: 70%; /* 让文字框宽度占满父容器 */
+}

@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Forum Styles</title>
+<style>
+.comment-container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 2rem auto;
+    background: #ffffff;
+    padding: 2rem;
+    box-sizing: border-box;
+    display: block;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e8e8e8;
+    position: relative;
+}
+
+.comment-container-title {
+    text-align: left;
+    font-size: 1.8rem;
+    color: #333333;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #f0f0f0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.comment-container-title::before {
+    content: '💬';
+    font-size: 1.5rem;
+}
+
+/* Post container styling - cleaner, card-like design */
+.post-container {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    border: 1px solid #e8e8e8;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.post-container:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transform: translateY(-1px);
+}
+
+/* User avatar styling */
+.user-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #f0f0f0;
+    transition: none;
+}
+
+.user-avatar:hover {
+    transform: none;
+}
+
+/* Username styling */
+.user-id {
+    font-size: 0.9rem;
+    color: #666;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    text-align: left;
+    text-transform: none;
+    letter-spacing: normal;
+}
+
+/* Post content styling */
+.post-content {
+    color: #333;
+    line-height: 1.6;
+    margin: 1rem 0;
+    padding: 0;
+    background: none;
+    border: none;
+    border-radius: 0;
+    font-size: 0.95rem;
+}
+
+/* Input styling - cleaner design */
+.comment-input {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    width: 100%;
+    margin-bottom: 1rem;
+    transition: border-color 0.2s ease;
+    font-size: 0.9rem;
+    background: #ffffff;
+    resize: vertical;
+    min-height: 40px;
+}
+
+.comment-input:focus {
+    outline: none;
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.1);
+    transform: none;
+}
+
+.comment-input::placeholder {
+    color: #999;
+    font-style: normal;
+}
+
+/* Button styling - modern, clean design */
+.comment-button {
+    background: #4a90e2;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    padding: 0.6rem 1.2rem;
+    font-weight: 500;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    text-transform: none;
+    letter-spacing: normal;
+    box-shadow: none;
+}
+
+.comment-button:hover {
+    background: #357abd;
+    transform: none;
+    box-shadow: none;
+}
+
+.comment-button:active {
+    transform: none;
+}
+
+/* Comment list styling */
+.comment-list {
+    margin-top: 1rem;
+    border-top: 1px solid #f0f0f0;
+    padding-top: 1rem;
+}
+
+/* Comment item styling - clean, minimal design */
+.comment-item {
+    background: #fafafa;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border: 1px solid #f0f0f0;
+    transition: background-color 0.2s ease;
+    position: relative;
+    overflow: visible;
+}
+
+.comment-item::before {
+    display: none;
+}
+
+.comment-item:hover {
+    background: #f5f5f5;
+    transform: none;
+    box-shadow: none;
+    border-color: #e0e0e0;
+}
+
+/* Delete button styling */
+.delete-button {
+    background: #ff4757;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    padding: 0.4rem 0.8rem;
+    font-weight: 500;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    text-transform: none;
+    letter-spacing: normal;
+    margin-left: 1rem;
+}
+
+.delete-button:hover {
+    background: #ff3742;
+    transform: none;
+}
+
+/* Post interaction elements */
+.post-container .text-blue-500 {
+    color: #4a90e2 !important;
+    font-weight: 500;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    background: rgba(74, 144, 226, 0.1);
+    transition: background-color 0.2s ease;
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    text-decoration: none;
+}
+
+.post-container .text-blue-500:hover {
+    background: rgba(74, 144, 226, 0.15);
+    transform: none;
+}
+
+/* Comment section visibility */
+.comment-section {
+    display: none;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #f0f0f0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .post-container {
+        margin: 1rem 0;
+        padding: 1rem;
+    }
+    
+    .comment-container {
+        margin: 1rem;
+        padding: 1.5rem 1rem;
+    }
+    
+    .comment-container-title {
+        font-size: 1.5rem;
+    }
+    
+    .comment-button {
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+    
+    .comment-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .delete-button {
+        margin-left: 0;
+        margin-top: 0.5rem;
+        align-self: flex-end;
+    }
+}
+
+/* Flex utilities */
+.flex {
+    display: flex;
+}
+
+.space-x-4 > * + * {
+    margin-left: 1rem;
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+/* Comment content styling */
+.comment-item > div:first-child {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    flex: 1;
+}
+
+.comment-item img {
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    width: 32px;
+    height: 32px;
+}
+
+.comment-item span {
+    color: #333;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* Remove excessive animations */
+.fade-in,
+.fade-out {
+    animation: none;
+}
+
+@keyframes fadeInSlide {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        max-height: 0;
+    }
+    to {
+        opacity: 1;
+        max-height: 300px;
+    }
+}
+
+/* Focus states for accessibility */
+.comment-input:focus,
+.comment-button:focus,
+.delete-button:focus {
+    outline: 2px solid #4a90e2;
+    outline-offset: 2px;
+}
+
+/* Clean scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Additional styling for better hierarchy */
+.post-container .user-id {
+    color: #666;
+    font-weight: 600;
+}
+
+.comment-item .user-id {
+    color: #333;
+    font-weight: 600;
+    margin-right: 0.5rem;
+}
+
+/* Time stamps and meta info */
+.post-container .meta-info,
+.comment-item .meta-info {
+    color: #999;
+    font-size: 0.8rem;
+    margin-top: 0.25rem;
+}
+</style>
+</head>
+<body>
+    <div style="padding: 2rem; background: #f8f9fa; min-height: 100vh;">
+        <div class="comment-container">
+            <h1 class="comment-container-title">太空论坛</h1>
+            
+            <!-- New post form -->
+            <div class="post-container">
+                <div class="flex space-x-4">
+                    <div>
+                        <p class="user-id">当前用户</p>
+                        <img src="https://via.placeholder.com/48x48/4a90e2/ffffff?text=U" class="user-avatar" alt="User Avatar">
+                    </div>
+                    <div class="flex-1">
+                        <input id="new-post-content" class="comment-input" placeholder="写下你的心情...">
+                        <button id="add-new-post" class="comment-button">
+                            发帖
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sample posts -->
+            <div class="post-container">
+                <div class="flex space-x-4">
+                    <div>
+                        <p class="user-id">zhorden</p>
+                        <img src="https://via.placeholder.com/48x48/2ecc71/ffffff?text=Z" class="user-avatar" alt="User Avatar">
+                    </div>
+                    <div class="flex-1">
+                        <p class="post-content">吧们们有没有会超光速飞的，我想去2026年5月26号玩GTA6</p>
+                        <button class="delete-button">删除</button>
+                        <span class="text-blue-500 cursor-pointer">💬 1 评论   👍 1 赞</span>
+                        <div class="comment-section" style="display: block;">
+                            <div class="comment-list">
+                                <div class="comment-item">
+                                    <div>
+                                        <img src="https://via.placeholder.com/32x32/e74c3c/ffffff?text=R" alt="User Avatar">
+                                        <span><strong>回复者:</strong> 我也想去未来看看</span>
+                                    </div>
+                                    <button class="delete-button">删除</button>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <input class="comment-input" placeholder="写下你的评论...">
+                                <button class="comment-button">添加评论</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="post-container">
+                <div class="flex space-x-4">
+                    <div>
+                        <p class="user-id">泥豪</p>
+                        <img src="https://via.placeholder.com/48x48/9b59b6/ffffff?text=N" class="user-avatar" alt="User Avatar">
+                    </div>
+                    <div class="flex-1">
+                        <p class="post-content">想到外太空去做一个宇宙垃圾。做梦从来没梦到过宇宙，但是昨天竟亮想被吸到黑洞里变成碎片</p>
+                        <span class="text-blue-500 cursor-pointer">💬 0 评论   👍 1 赞</span>
+                        <div class="comment-section">
+                            <div class="mt-4">
+                                <input class="comment-input" placeholder="写下你的评论...">
+                                <button class="comment-button">添加评论</button>
+                            </div>
+                            <div class="comment-list"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle comment section visibility
+        function toggleCommentSection(postId) {
+            const section = document.getElementById(`comment-section-${postId}`);
+            if (section) {
+                section.style.display = section.style.display === 'none' ? 'block' : 'none';
+            }
+        }
+
+        // Add click handlers for comment toggles
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.text-blue-500').forEach(element => {
+                element.addEventListener('click', function() {
+                    const postContainer = this.closest('.post-container');
+                    const commentSection = postContainer.querySelector('.comment-section');
+                    if (commentSection) {
+                        commentSection.style.display = commentSection.style.display === 'none' || commentSection.style.display === '' ? 'block' : 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

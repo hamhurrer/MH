@@ -1,0 +1,22 @@
+{
+  "name": "mindheaven",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "build": "mkdir -p dist && cp src/* dist/" 
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hamhurrer/mindheaven.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hamhurrer/mindheaven/issues"
+  },
+  "homepage": "https://github.com/hamhurrer/mindheaven#readme"
+}

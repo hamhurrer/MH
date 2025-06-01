@@ -1,0 +1,713 @@
+
+.combined-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    overflow: hidden; /* 关键：隐藏波浪超出部分 */
+}
+.wave-container {
+    position: absolute;
+    height: 115rem;
+    top:0;
+    transform: translateY(-600px)
+}
+.comment-container {
+    position: absolute;
+    width: 1300px;
+    max-width: 1100px;
+    margin: 2rem auto;
+    padding: 2rem;
+    box-sizing: border-box;
+    display: block;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(69, 77, 90, 0.402);
+    position: relative;
+    margin-top: 2rem;
+}
+
+/* 如果需要更好的文字可读性，可以添加一个伪元素作为覆盖层 */
+.comment-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 12px;
+    z-index: 1;
+    margin-top: 2rem;
+}
+
+/* 确保内容在覆盖层之上 */
+.comment-container > * {
+    position: relative;
+    z-index: 2;
+    margin-top: 2rem;
+}
+
+.comment-container-title {
+    text-align: left;
+    font-size: 1.8rem;
+    color: #333333;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #d2cdcd;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.comment-container-title::before {
+    content: '💬';
+    font-size: 1.5rem;
+}
+
+/* Post container styling - cleaner, card-like design */
+.post-container {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    border: 1px solid #e8e8e8;
+    transition: all 0.2s ease;
+    position: relative;
+    width: 1000px;
+    margin-top: 2rem;
+}
+
+.post-container:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.242);
+    transform: translateY(-1px);
+}
+
+/* User avatar styling */
+.user-avatar {
+    width: 120px;
+    height: 80px;
+    object-fit: cover;
+    border: 2px solid #f0f0f0;
+    transition: none;
+}
+
+.user-avatar:hover {
+    transform: none;
+}
+
+/* Username styling */
+.user-id {
+    font-size: 2rem;
+    color: #666;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    text-align: left;
+    text-transform: none;
+    letter-spacing: normal;
+}
+
+/* Post content styling */
+.post-content {
+    color: #333;
+    line-height: 1.6;
+    margin: 1rem 0;
+    padding: 0;
+    background: none;
+    border: none;
+    border-radius: 0;
+    font-size: 1.5rem;
+}
+
+/* Input styling - cleaner design */
+.comment-input {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    width: 100%;
+    margin-bottom: 1rem;
+    transition: border-color 0.2s ease;
+    font-size: 1.5rem;
+    background: #ffffff;
+    resize: vertical;
+    min-height: 40px;
+}
+
+.comment-input:focus {
+    outline: none;
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.1);
+    transform: none;
+}
+
+.comment-input::placeholder {
+    color: #999;
+    font-style: normal;
+}
+
+/* Button styling - modern, clean design */
+.comment-button {
+    background: #4a90e2;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    padding: 0.6rem 1.2rem;
+    font-weight: 500;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    text-transform: none;
+    letter-spacing: normal;
+    box-shadow: none;
+}
+
+.comment-button:hover {
+    background: #357abd;
+    transform: none;
+    box-shadow: none;
+}
+
+.comment-button:active {
+    transform: none;
+}
+
+/* Comment list styling */
+.comment-list {
+    margin-top: 1rem;
+    border-top: 1px solid #f0f0f0;
+    padding-top: 1rem;
+}
+
+/* Comment item styling - clean, minimal design */
+.comment-item {
+    background: #fafafa;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border: 1px solid #f0f0f0;
+    transition: background-color 0.2s ease;
+    position: relative;
+    overflow: visible;
+}
+
+.comment-item::before {
+    display: none;
+}
+
+.comment-item:hover {
+    background: #f5f5f5;
+    transform: none;
+    box-shadow: none;
+    border-color: #e0e0e0;
+}
+
+/* Delete button styling */
+.delete-button {
+    background: #ff4757;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    padding: 0.4rem 0.8rem;
+    font-weight: 500;
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    text-transform: none;
+    letter-spacing: normal;
+    margin-left: 1rem;
+}
+
+.delete-button:hover {
+    background: #ff3742;
+    transform: none;
+}
+
+/* Post interaction elements */
+.post-container .text-blue-500 {
+    color: #4a90e2 !important;
+    font-weight: 500;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    background: rgba(74, 144, 226, 0.1);
+    transition: background-color 0.2s ease;
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-size: 1.4rem;
+    text-decoration: none;
+}
+
+.post-container .text-blue-500:hover {
+    background: rgba(74, 144, 226, 0.15);
+    transform: none;
+}
+
+/* Comment section visibility */
+.comment-section {
+    display: none;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #f0f0f0;
+}
+
+/* 新增的弹窗样式 */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(4px);
+}
+
+.modal-overlay.show {
+    display: flex;
+}
+
+.post-modal {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 2rem;
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    position: relative;
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #d2cdcd;
+}
+
+.modal-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #333;
+    margin: 0;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #999;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-close:hover {
+    background: #f0f0f0;
+    color: #666;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #333;
+    font-size: 1.5rem;
+}
+
+.form-label .required {
+    color: #ff4757;
+    margin-right: 0.25rem;
+}
+
+.form-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1.5rem;
+    transition: border-color 0.2s ease;
+    box-sizing: border-box;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+.form-textarea {
+    resize: vertical;
+    min-height: 120px;
+    font-family: inherit;
+}
+
+.image-upload-area {
+    border: 2px dashed #ddd;
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    background: #fafafa;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.image-upload-area:hover {
+    border-color: #4a90e2;
+    background: #f5f8ff;
+}
+
+.image-upload-area.dragover {
+    border-color: #4a90e2;
+    background: #f5f8ff;
+}
+
+.upload-icon {
+    font-size: 2rem;
+    color: #ccc;
+    margin-bottom: 1rem;
+}
+
+.upload-text {
+    color: #666;
+    font-size: 1.5rem;
+    line-height: 1.5;
+}
+
+.upload-text .highlight {
+    color: #4a90e2;
+    font-weight: 600;
+}
+
+.file-input {
+    display: none;
+}
+
+.image-preview {
+    margin-top: 1rem;
+    display: none;
+}
+
+.preview-image {
+    max-width: 100%;
+    max-height: 200px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #f0f0f0;
+}
+
+.btn-cancel {
+    background: #f8f9fa;
+    color: #666;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 0.75rem 1.5rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-cancel:hover {
+    background: #e9ecef;
+    border-color: #ccc;
+}
+
+.btn-submit {
+    background: #1890ff;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    padding: 0.75rem 2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-submit:hover {
+    background: #0066cc;
+    transform: translateY(-1px);
+}
+
+.btn-submit:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .post-container {
+        margin: 1rem 0;
+        padding: 1rem;
+    }
+    
+    .comment-container {
+        margin: 1rem;
+        padding: 1.5rem 1rem;
+    }
+    
+    .comment-container-title {
+        font-size: 2rem;
+    }
+    
+    .comment-button {
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+    
+    .comment-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .delete-button {
+        margin-left: 0;
+        margin-top: 0.5rem;
+        align-self: flex-end;
+    }
+    
+    .post-modal {
+        width: 95%;
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+    
+    .modal-actions {
+        flex-direction: column;
+    }
+    
+    .btn-cancel,
+    .btn-submit {
+        width: 100%;
+    }
+}
+
+/* Flex utilities */
+.flex {
+    display: flex;
+}
+
+.space-x-4 > * + * {
+    margin-left: 1rem;
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+/* Comment content styling */
+.comment-item > div:first-child {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    flex: 1;
+}
+
+.comment-item img {
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    width: 32px;
+    height: 32px;
+}
+
+.comment-item span {
+    color: #333;
+    font-size: 1.5rem;
+    line-height: 1.5;
+}
+
+/* Remove excessive animations */
+.fade-in,
+.fade-out {
+    animation: none;
+}
+
+@keyframes fadeInSlide {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        max-height: 0;
+    }
+    to {
+        opacity: 1;
+        max-height: 300px;
+    }
+}
+
+/* 标签选择器样式 */
+.tags-container {
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 1rem;
+    background: #f8f9fa;
+}
+
+.tag-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.tag-item {
+    background: #ffffff;
+    border: 2px solid #e0e0e0;
+    border-radius: 20px;
+    padding: 0.4rem 0.8rem;
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+    color: #555;
+}
+
+.tag-item:hover {
+    border-color: #4a90e2;
+    background: #f0f8ff;
+    transform: translateY(-1px);
+}
+
+.tag-item.selected {
+    background: #4a90e2;
+    color: #ffffff;
+    border-color: #4a90e2;
+}
+
+.selected-tags {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    min-height: 60px;
+}
+
+.selected-label {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.selected-tags-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.selected-tag {
+    background: #4a90e2;
+    color: #ffffff;
+    padding: 0.3rem 0.6rem;
+    border-radius: 15px;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.remove-tag {
+    cursor: pointer;
+    font-weight: bold;
+    opacity: 0.7;
+}
+
+.remove-tag:hover {
+    opacity: 1;
+}
+
+/* 帖子中的标签显示样式 */
+.post-tags {
+    margin: 0.5rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+}
+
+.post-tag {
+    background: linear-gradient(135deg, #667eea9e 0%, #764ba289 100%);
+    color: #ffffff;
+    padding: 0.4rem 1.2rem;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* Clean scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Additional styling for better hierarchy */
+.post-container .user-id {
+    color: #666;
+    font-weight: 600;
+}
+
+.comment-item .user-id {
+    color: #333;
+    font-weight: 600;
+    margin-right: 0.5rem;
+}
+
+/* Time stamps and meta info */
+.post-container .meta-info,
+.comment-item .meta-info {
+    color: #999;
+    font-size: 1.4rem;
+    margin-top: 0.25rem;
+}

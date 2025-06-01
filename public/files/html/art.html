@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>艺术</title>
+		<style>
+			header {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				padding: 0px 30px;
+				display: flex;
+				justify-content: flex-start;
+				align-items: center;
+				z-index: 100;
+				margin: 0; 
+			}
+
+			.Home a{
+				padding: 6px 15px;
+				border-radius: 20px;
+				margin: 0 10px;
+				color:#5698c3;
+				font-weight: 600;
+				text-decoration: none;
+			}
+			.Home a:hover{
+				background:#5698c3;
+    			color: #fff;
+			}
+
+			body {
+				margin: 0;
+				width: 100vw;
+				height: 100vh;
+				background: linear-gradient(to bottom right,#c7d2d4, #0eb0c9);
+			}
+
+			.box {
+				width: 1200px;
+				margin: auto;
+				padding-top: 80px;
+			}
+
+			.box>.title {
+				display: flex;
+				justify-content: space-around;
+				margin-bottom: 50px;
+			}
+
+			.box>.title>.item {
+				background: linear-gradient(to bottom right, #0eb0c9, #c7d2d4);
+				height: 80px;
+				width: 20%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				border-radius: 28px;
+				box-shadow: 0 0 10px #fff;
+				cursor: pointer;
+			}
+
+			.box>.title>.item>img {
+				width: 70px;
+				height: 70px;
+				border-radius: 100%;
+				transition: .5s;
+				object-fit: cover;
+			}
+
+			.box>.title>.item>span {
+				color: #fff;
+				font-size: 18px;
+				letter-spacing: 5px;
+				margin-right: 10px;
+				font-weight: bold;
+				transition: .5s;
+			}
+
+			.box>.title>.checked {
+				background: linear-gradient(to bottom right, #0eb0c9, #c7d2d4);
+				box-shadow: 0 0 28px #fff;
+			}
+
+			.box>.title>.checked>span {
+				margin-right: 35px;
+			}
+
+			.box>.title>.checked>img {
+				transform: scale(1.5);
+			}
+
+			.content {
+				background-color: rgba(255, 255, 255, .5);
+				height: 0;
+				padding: 0;
+				overflow: hidden;
+				border-radius: 30px;
+				color: #3B559B;
+				opacity: 0;
+				transition: .5s;
+			}
+
+			.che {
+				opacity: 1;
+				height: auto ;
+				padding: 20px;
+			}
+
+			.content>.smallTit {
+				font-size: 20px;
+
+			}
+
+			.content>h1 {
+				font-size: 50px;
+				margin: 20px 0;
+			}
+
+			.content>.body {
+				font-size: 18px;
+				line-height: 2;
+				text-align: justify;
+			}
+
+			.imgList1 {
+				display: flex;
+				justify-content: space-between;
+				margin-top: 30px;
+			}
+
+			.imgList1>img {
+				width: 30%;
+				height: 330px;
+				object-fit: cover;
+				border-radius: 30px;
+			}
+			.text-box {
+				background-color: rgba(255, 255, 255, 0.8);
+				color: #3B559B;
+				border-radius: 15px;
+				padding: 15px;
+				margin-top: 20px;
+				font-size: 18px;
+				line-height: 2;
+				text-align: justify;
+        	}
+			.text-box a {
+				text-decoration: none;
+				color: #3B559B;
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+        	<h2 class="Home"><a href="../../index.php">Home</a></h2>
+		</header>
+		<div class="box">
+			<div class="title">
+				<div class="item">
+					<span>流体画 </span>
+					<img src="../image/tit3.jpg" alt="" />
+				</div>
+				<div class="item checked">
+					<span>蓝晒摄影</span>
+					<img src="../image/tit2.jpg" alt="" />
+				</div>
+				<div class="item">
+					<span>微缩建模</span>
+					<img src="../image/tit1.jpg" alt="" />
+				</div>
+			</div>
+			<div class="content">
+				<div class="smallTit">——让情绪在画布的疆域合法暴动，把淤积的心碎浇筑成流动的银河</div>
+				<h1>流体画</h1>
+				<div class="body">
+					<li>优势：无需绘画基础，倾倒颜料的失控感隐喻释放</li>
+					<li>工具：丙烯流体画套装（100元左右）、画布</li>
+					<li>心理机制：色彩流动的不可控性象征情感释放，完成品自带治愈感</li>
+				</div>
+				<div class="imgList1">
+					<img src="../image/b3.jpg" alt="">
+					<img src="../image/b2.jpg" alt="">
+					<img src="../image/b1.jpg" alt="">
+				</div>
+				<div class="text-box">
+				<a href=https://www.bilibili.com/video/BV1GW411j7Fx/?spm_id_from=333.337.search-card.all.click>click for detail</a>
+				</div>
+			</div>
+			<div class="content che">
+				<div class="smallTit">——‌痛苦从来不是结局，它只是让生命底色显影的显影剂</div>
+				<h1>蓝晒摄影</h1>
+				<div class="body">
+					<li>优势：外出采集打断反刍思维，紫外线刺激神经递质平衡</li>
+					<li>过程：采集落叶+感光纸日光显影 </li>
+					<li>心理机制：将创伤叙事转化为可触摸的审美客体</li>
+				</div>
+				<div class="imgList1">
+					<img src="../image/a1.jpg" alt="">
+					<img src="../image/a2.jpg" alt="">
+					<img src="../image/a3.jpg" alt="">
+				</div>
+				<div class="text-box">
+				<a href=https://www.bilibili.com/video/BV1514y1x7v8/?spm_id_from=333.337.search-card.all.click>click for detail</a>
+				</div>
+			</div>
+			<div class="content">
+				<div class="smallTit">——所有坍塌的宇宙，都等你用指缝间的微光重新校准经纬度。</div>
+				<h1>微缩建模</h1>
+				<div class="body">
+					<li>优势：促进认知重塑、调节神经活动及重建社会认同。</li>
+					<li>过程：构思与场景设计+材料选择与精细制作 </li>
+					<li>科学依据：精细动作激活前额叶，1:87比例强迫大脑专注当下</li>
+				</div>
+				<div class="imgList1">
+					<img src="../image/c1.jpg" alt="">
+					<img src="../image/c2.jpg" alt="">
+					<img src="../image/c3.jpg" alt="">
+				</div>
+				<div class="text-box">
+				<a href=https://www.bilibili.com/video/BV1h5411274E/?spm_id_from=333.788.recommend_more_video.-1>click for detail</a>
+				</div>
+			</div>
+		</div>
+		<script>
+			let titlist = document.querySelectorAll('.title>.item');
+			let conlist = document.querySelectorAll('.content');
+			for (let i = 0; i < titlist.length; i++) {
+				titlist[i].onclick = function() {
+					clear();
+					titlist[i].classList.add('checked');
+					conlist[i].classList.add('che');
+				}
+			}
+
+			function clear() {
+				for (let i = 0; i < titlist.length; i++) {
+					titlist[i].classList.remove('checked');
+					conlist[i].classList.remove('che');
+				}
+			}
+		</script>
+	</body>
+</html>

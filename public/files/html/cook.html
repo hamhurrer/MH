@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>烹饪</title>
+		<style>
+			header {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				padding: 0px 30px;
+				display: flex;
+				justify-content: flex-start;
+				align-items: center;
+				z-index: 100;
+				margin: 0; 
+			}
+
+			.Home a{
+				padding: 6px 15px;
+                color:#ee4866;
+				border-radius: 20px;
+				margin: 0 10px;
+				font-weight: 600;
+				text-decoration: none;
+			}
+			.Home a:hover{
+				background:#ee4866;
+    			color: #fff;
+			}
+			body {
+				margin: 0;
+				width: 100vw;
+				height: auto;
+				background: radial-gradient(ellipse at top left, #f3dee5 0%, #f3dee5 30%, #f4efcb 100%);
+			}
+
+			.box {
+				width: 1200px;
+				margin: auto;
+				padding-top: 80px;
+			}
+
+			.box>.title {
+            display: flex;
+            justify-content: space-around; 
+            margin-bottom: 50px;
+        }
+
+			.box>.title>.item {
+				background: radial-gradient(ellipse at top left, #f4efcb 0%, #f4efcb 20%, #f3dee5 100%);
+				height: 80px;
+				width: 20%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				border-radius: 28px;
+				box-shadow: 0 0 10px #fff;
+				cursor: pointer;
+			}
+
+			.box>.title>.item>img {
+				width: 70px;
+				height: 70px;
+				border-radius: 100%;
+				transition: .5s;
+				object-fit: cover;
+			}
+
+			.box>.title>.item>span {
+				color: #fff;
+				font-size: 18px;
+				letter-spacing: 5px;
+				margin-right: 10px;
+				font-weight: bold;
+				transition: .5s;
+			}
+
+			.box>.title>.checked {
+				background: radial-gradient(ellipse at top left, #f4efcb 0%, #f4efcb 20%, #f3dee5 100%);
+				box-shadow: 0 0 28px #fff;
+			}
+
+			.box>.title>.checked>span {
+				margin-right: 35px;
+			}
+
+			.box>.title>.checked>img {
+				transform: scale(1.5);
+			}
+
+			.content {
+				background-color: rgba(255, 255, 255, .5);
+				height: 0;
+				padding: 0;
+				overflow: hidden;
+				border-radius: 30px;
+				color: #621624;
+				opacity: 0;
+				transition: .5s;
+			}
+
+			.che {
+				opacity: 1;
+				height: auto;
+				padding: 20px;
+			}
+
+			.content>.smallTit {
+				font-size: 20px;
+
+			}
+
+			.content>h1 {
+				font-size: 50px;
+				margin: 20px 0;
+			}
+
+			.content>.body {
+				font-size: 18px;
+				line-height: 2;
+				text-align: justify;
+			}
+
+			.imgList {
+				display: flex;
+				justify-content: space-between;
+				margin-top: 30px;
+			}
+
+			.imgList>img {
+				width: 47%;
+				height: 330px;
+				object-fit: cover;
+				border-radius: 30px;
+			}
+			
+			.text-box  {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            padding: 15px;
+            margin-top: 20px;
+            font-size: 16px;
+            line-height: 1.6;
+            word-wrap: break-word;
+        }
+			.text-box a {
+				text-decoration: none;
+				color: #621624;
+			}
+		
+		</style>
+	</head>
+	<body>
+		<header>
+       		<h2 class="Home"><a href="../../index.php">Home</a></h2>
+		</header>
+		<div class="box">
+			<div class="title">
+				<div class="item">
+					<span>主食</span>
+        
+					<img src="../image/zs.jpg" alt="" />
+				</div>
+				<div class="item checked">
+					<span>饮料</span>
+					<img src="../image/yl.jpg" alt="" />
+				</div>
+				<div class="item ">
+					<span>甜品</span>
+					<img src="../image/tp.jpg" alt="" />
+				</div>
+			</div>
+			<div class="content">
+				<div class="smallTit">主食推荐</div>
+				<h1>乌冬面</h1>
+				<div class="body">
+					1.盐+水先稀释溶解至盐水！面粉+木薯粉混合，盐水分次加入面粉中搅拌均匀，揉成偏硬的面团！无需光滑，无干粉即可！装进保鲜袋醒面30分钟！<br>
+					2.取出面团，用折叠法揉面，持续大概5-8分钟！直至面团光滑！，再放回保鲜袋醒面1小时！夏天或者不急着做可以放冰箱冷藏醒面，用时提前15分钟取出来回一下温！<br>
+					3.取出面团，案板上撒上些淀粉防粘！先用擀面杖局部轻轻的按压，再轻轻的擀开！<br>
+					4.擀成均匀的面饼，厚度大概3mm左右，其实厚度随自己喜欢，我连5mm都擀过，一样筋道<br>
+					5.撒上一点淀粉防粘，借助刀子或滚刀切成自己喜欢的长、宽度！<br>
+					6.水开下锅，煮沸后大概再煮8-10分钟，具体视面条的粗细自行调节！<br>
+					7.出锅后过一次冷水，使面团更加筋道！<br>
+					8.捞出面条，加上配料，完成！
+				</div>
+				<div class="imgList">
+					<img src="../image/wdmyl.png" alt="">
+					<img src="../image/wdm.jpg" alt="">
+				</div>
+				<div class="text-box"><a href="https://www.xiachufang.com/"> Click for more to teach you how to cook </a></div>
+			</div>
+			<div class="content">
+				<div class="smallTit">饮料推荐</div>
+				<h1>自制奶茶</h1>
+				<div class="body">
+					1.小奶锅里加入纯净水(水对茶的口感来说至关重要，有种说法是“水为茶之母“)，把红茶和冰糖放入锅内，煮沸腾后小火煮15秒钟左右再倒入纯牛奶。<br>
+					2.倒牛奶时要开大火(防止糊锅)，边倒牛奶边用勺子搅拌(搅拌还是防止糊锅)，牛奶倒入煮沸腾后就关火，关火后再焖2分钟左右，再搅拌一下过滤到壶里即可！<br>
+					3.把奶粉提前倒入茶壶里，再倒入用滤网过滤后的奶茶搅拌均匀即可。
+				</div>
+				<div class="imgList">
+					<img src="../image/ncyl.png" alt="">
+					<img src="../image/nc.jpg" alt="">
+				</div>
+				<div class="text-box"><a href="https://www.xiachufang.com/"> Click for more to teach you how to cook </a></div>
+			</div>
+			<div class="content che">
+				<div class="smallTit">甜品推荐</div>
+				<h1>酸奶柠檬巴巴露亚</h1>
+				<div class="body">
+					1.柠檬表皮用盐搓洗干净，削下表皮，注意不要带白色部分，会发苦。吉利丁片用冷水泡软<br>
+					2.蛋黄+细砂糖搅打均匀<br>
+					3.蓬松微微发白即可<br>
+					4.柠檬皮和牛奶一起倒入锅中，开火煮沸立即关火，焖5分钟<br>
+					5.过筛出牛奶<br>
+					6.过筛后的牛奶少量多次倒入蛋黄液中<br>
+					7.边倒边搅拌均匀<br>
+					8.将混合好的蛋黄牛奶液再次倒入锅中，可以和之前的柠檬皮再次一起煮，也可以去掉。。小火煮至稍微浓稠立马关火（注意观察到稍微浓稠就要立马关火，不然鸡蛋会被煮过凝结成蛋渣）<br>
+					9.再次过筛一遍，可以使口感更加细腻<br>
+					10.提前泡软的吉利丁片加入到上述过筛后的蛋黄牛奶糊中<br>
+					11.搅拌融化<br>
+					12.将自制的无糖酸奶倒入上一步的蛋黄牛奶糊中，拌匀<br>
+					13.倒入蛋糕纸杯中，可以做6杯的量，放冰箱冷藏过夜即可凝固<br>
+					14.取出凝固好的巴巴露亚，脱去纸杯<br>
+					15.撒上柠檬屑或者用自制的酸奶裱上小花朵
+				</div>
+				<div class="imgList">
+					<img src="../image/bblyyl.png" alt="">
+					<img src="../image/bbly.jpg" alt="">
+				</div>
+				<div class="text-box"><a href="https://www.xiachufang.com/"> Click for more to teach you how to cook </a></div>
+			</div>
+		</div>
+		<script>
+			let titlist = document.querySelectorAll('.title>.item');
+			let conlist = document.querySelectorAll('.content');
+			for (let i = 0; i < titlist.length; i++) {
+				titlist[i].onclick = function() {
+					clear();
+					titlist[i].classList.add('checked');
+					conlist[i].classList.add('che');
+				}
+			}
+
+			function clear() {
+				for (let i = 0; i < titlist.length; i++) {
+					titlist[i].classList.remove('checked');
+					conlist[i].classList.remove('che');
+				}
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<script src="https://cdn.tailwindcss.com"></script>
+    <title>冥想</title>
+    <style>
+        @charset "utf-8";
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+         header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px 100px;
+    display: flex;
+    justify-content: center; /* 修改为居中对齐 */
+    align-items: center;
+    z-index: 100;
+    margin: 0; 
+}
+
+        
+        .home-btn {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                padding: 12px 24px;
+                background: rgba(255, 255, 255, 0.1);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                border-radius: 50px;
+                color: #fff;
+                text-decoration: none;
+                font-weight: 600;
+                font-size: 16px;
+                transition: all 0.3s ease;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+                top:1.8rem;
+                left:3rem;
+                position:fixed;
+            }
+
+            .home-btn:hover {
+                background: rgba(255, 255, 255, 0.2);
+                transform: translateY(-2px);
+                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            }
+
+            .home-btn::before {
+                content: "←";
+                font-size: 16px;
+                font-weight: bold;
+            }
+        
+              .glass {
+                background: rgba(248, 250, 252, 0.8);
+                backdrop-filter: blur(12px);
+                border: 1px solid rgba(186, 230, 253, 0.4);
+                box-shadow: 0 8px 32px rgba(14, 165, 233, 0.1);
+            }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: radial-gradient(ellipse at top left, #f3dee5 0%, #f3dee5 30%, #c4d4df 100%);
+            padding-top: 100px;
+        }
+
+        .main-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            max-width: 100%;
+            height: 70vh; /* 增加主容器高度 */
+            margin: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cards-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            position: absolute;
+            width: 45%; /* 减小卡片容器宽度，避免与播放器重叠 */
+            height: 100%;
+        }
+
+        .cards-container:first-child {
+            left: 0;
+            justify-content: flex-end;
+            padding-right: 80px; /* 增加右内边距，确保与播放器有间距 */
+        }
+
+        .cards-container:last-child {
+            right: 0;
+            justify-content: flex-start;
+            padding-left: 80px; /* 增加左内边距，确保与播放器有间距 */
+        }
+
+        .card {
+            width: 180px; /* 减小卡片宽度，避免与播放器重叠 */
+            height: 230px; /* 减小卡片高度 */
+            margin: 0 15px; /* 调整卡片间距 */
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+            font-size: 1.3em;
+            font-weight: 900;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.95);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+            padding-bottom: 18px;
+            transform-origin: center;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+        }
+
+        /* 左侧卡片样式 */
+        .card.left-2 {
+            transform: scale(0.85) translateX(10px); /* 调整位置和缩放比例 */
+            opacity: 0.5;
+        }
+
+        .card.left-1 {
+            transform: scale(0.95) translateX(5px); /* 调整位置和缩放比例 */
+            opacity: 0.75;
+        }
+
+        .card.left-2:hover {
+            transform: scale(0.92) translateY(-6px) translateX(10px);
+            opacity: 0.7;
+        }
+
+        .card.left-1:hover {
+            transform: scale(1.02) translateY(-6px) translateX(5px);
+            opacity: 0.9;
+        }
+
+        /* 右侧卡片样式 */
+        .card.right-1 {
+            transform: scale(0.95) translateX(-5px); /* 调整位置和缩放比例 */
+            opacity: 0.9;
+        }
+
+        .card.right-2 {
+            transform: scale(0.85) translateX(-10px); /* 调整位置和缩放比例 */
+            opacity: 0.75;
+        }
+
+        .card.right-1:hover {
+            transform: scale(1.02) translateY(-6px) translateX(-5px);
+            opacity: 1.1;
+        }
+
+        .card.right-2:hover {
+            transform: scale(0.92) translateY(-6px) translateX(-10px);
+            opacity: 0.9;
+        }
+
+        .music-player {
+            background: linear-gradient(145deg, #ffffff, #f0f0f0);
+            border-radius: 18px;
+            padding: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+            width: 280px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            z-index: 10;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            backdrop-filter: blur(10px);
+        }
+
+        .player-image {
+            width: 100%;
+            height: 160px;
+            border-radius: 12px;
+            object-fit: cover;
+            margin-bottom: 12px;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .player-title {
+            font-size: 1.4em;
+            color: #333;
+            text-align: center;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .player-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 12px;
+            gap: 12px;
+        }
+
+        .control-btn {
+            background: linear-gradient(145deg, #f8f8f8, #e8e8e8);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1em;
+            color: #333;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.2s ease;
+        }
+
+        .control-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .play-btn {
+            width: 50px;
+            height: 50px;
+            font-size: 1.2em;
+            background: linear-gradient(145deg, #f1939c, #e8808a);
+            color: white;
+        }
+
+        .progress-container {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 5px;
+            background: #e0e0e0;
+            border-radius: 3px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #f1939c, #e8808a);
+            border-radius: 3px;
+            width: 0%;
+            transition: width 0.1s ease;
+        }
+
+        .time-display {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8em;
+            color: #666;
+            margin-top: 3px;
+        }
+
+        .volume-container {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 6px;
+        }
+
+        .volume-slider {
+            flex: 1;
+            height: 3px;
+            background: #e0e0e0;
+            border-radius: 2px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .volume-fill {
+            height: 100%;
+            background: #f1939c;
+            border-radius: 2px;
+            width: 50%;
+        }
+
+        .volume-icon {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .bottom-text-box {
+            font-size: 24px;
+            color: #7C93B7;
+            margin-top: 30px;
+            text-align: justify;
+            width: 70%;
+            max-width: 800px;
+        }
+
+        .bottom-text-box a {
+            color: #f1939c;
+            text-decoration: none;
+        }
+
+        .bottom-text-box a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 1200px) {
+            .main-container {
+                height: 50vh;
+            }
+
+            .card {
+                width: 140px; /* 响应式调整卡片宽度 */
+                height: 180px; /* 响应式调整卡片高度 */
+                font-size: 1.1em;
+            }
+
+            .music-player {
+                width: 260px;
+            }
+            
+            .cards-container {
+                width: 40%; /* 减小卡片容器宽度 */
+            }
+            
+            .cards-container:first-child {
+                padding-right: 60px;
+            }
+            
+            .cards-container:last-child {
+                padding-left: 60px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                flex-direction: column;
+                height: auto;
+                min-height: 70vh;
+                padding: 20px 0;
+            }
+
+            .cards-container {
+                position: relative;
+                width: 100%;
+                height: auto;
+                padding: 10px 0;
+            }
+
+            .cards-container:first-child,
+            .cards-container:last-child {
+                left: auto;
+                right: auto;
+                padding: 0;
+                justify-content: center;
+            }
+
+            .card {
+                width: 100px; /* 响应式调整卡片宽度 */
+                height: 140px; /* 响应式调整卡片高度 */
+                margin: 0 8px; /* 响应式调整卡片间距 */
+                font-size: 1em;
+            }
+
+            .music-player {
+                position: relative;
+                left: auto;
+                top: auto;
+                transform: none;
+                width: 90%;
+                max-width: 300px;
+                margin: 20px 0;
+            }
+
+            header {
+                padding: 20px 30px;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+     <header>
+        <h2><a href="../../index.php" class="home-btn">Home</a></h2>
+        <div class="mb-20 text-center animate-slide-up">
+            <div class="flex justify-center items-center space-x-6 flex-wrap gap-4">
+                <div class="glass px-6 py-3 rounded-2xl flex items-center space-x-2">
+                    <a href="music.html" class="text-gray-700 font-medium">⭐冥想</a>
+                </div>
+                <div class="glass px-6 py-3 rounded-2xl flex items-center space-x-2">
+                    <a href="DY.html" class="text-gray-700 font-medium">❤️电影</a>
+                </div>
+                <div class="glass px-6 py-3 rounded-2xl flex items-center space-x-2">
+                    <a href="youxi.html" class="text-gray-700 font-medium">🪐游戏</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-container" id="mainContainer">
+        <!-- 中间播放器 -->
+        <div class="music-player" id="musicPlayer">
+            <img class="player-image" id="playerImage" src="../image/火.jpg" alt="专辑封面">
+            <div class="player-title" id="playerTitle">篝火冥想</div>
+
+            <div class="player-controls">
+                <button class="control-btn" id="prevBtn">⏮</button>
+                <button class="control-btn play-btn" id="playBtn">▶</button>
+                <button class="control-btn" id="nextBtn">⏭</button>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="time-display">
+                    <span id="currentTime">0:00</span>
+                    <span id="totalTime">0:00</span>
+                </div>
+            </div>
+
+            <div class="volume-container">
+                <span class="volume-icon">🔊</span>
+                <div class="volume-slider" id="volumeSlider">
+                    <div class="volume-fill" id="volumeFill"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--<div class="bottom-text-box">冥想：舒缓音频搭配专业指导语，有助于放松身心，平息杂念。冥想能调节紊乱神经，使失衡身心重归和谐。专注冥想时，焦虑、悲伤等负面情绪渐消，实现深度情绪管理。长期坚持，更能提升自我认知，汲取成长力量。短短几分钟，冥想打造的静谧时光，让我们在明晰内心，不被回忆和低落情绪痛苦纠缠，以平和之姿重启生活，在一呼一吸间，重寻内心久违的宁静。</div> -->
+    <div class="bottom-text-box"><a href="https://www.the-guided-meditation-site.com/">Click for more</a></div>
+
+    <!-- 隐藏的音频元素 -->
+    <audio id="audioPlayer" preload="metadata"></audio>
+
+    <script>
+        const audioPlayer = document.getElementById('audioPlayer');
+        const playerImage = document.getElementById('playerImage');
+        const playerTitle = document.getElementById('playerTitle');
+        const playBtn = document.getElementById('playBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const progressBar = document.getElementById('progressBar');
+        const progressFill = document.getElementById('progressFill');
+        const currentTimeDisplay = document.getElementById('currentTime');
+        const totalTimeDisplay = document.getElementById('totalTime');
+        const volumeSlider = document.getElementById('volumeSlider');
+        const volumeFill = document.getElementById('volumeFill');
+
+        let currentTrackIndex = 2; // 默认选中中间的火
+        let isPlaying = false;
+
+        const tracks = [
+            {
+                title: "雨声冥想",
+                audio: "../audio/雨.mp3",
+                image: "../image/雨.jpg",
+                text: "雨"
+            },
+            {
+                title: "寺庙冥想",
+                audio: "../audio/寺.mp3",
+                image: "../image/寺.jfif",
+                text: "寺"
+            },
+            {
+                title: "篝火冥想",
+                audio: "../audio/火.wav",
+                image: "../image/火.jpg",
+                text: "火"
+            },
+            {
+                title: "森林冥想",
+                audio: "../audio/林.wav",
+                image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=300&fit=crop",
+                text: "林"
+            },
+            {
+                title: "海浪冥想",
+                audio: "../audio/海.flac",
+                image: "https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=400&h=300&fit=crop",
+                text: "海"
+            }
+        ];
+
+        // 初始化
+        loadTrack(currentTrackIndex);
+        updateCardsDisplay();
+
+        // 卡片点击事件
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('card')) {
+                const clickedCard = e.target;
+                const classes = clickedCard.className.split(' ');
+
+                if (classes.includes('left-2')) {
+                    currentTrackIndex = (currentTrackIndex - 2 + tracks.length) % tracks.length;
+                } else if (classes.includes('left-1')) {
+                    currentTrackIndex = (currentTrackIndex - 1 + tracks.length) % tracks.length;
+                } else if (classes.includes('right-1')) {
+                    currentTrackIndex = (currentTrackIndex + 1) % tracks.length;
+                } else if (classes.includes('right-2')) {
+                    currentTrackIndex = (currentTrackIndex + 2) % tracks.length;
+                }
+
+                // 添加平滑过渡效果
+                const cards = document.querySelectorAll('.card');
+                cards.forEach(card => {
+                    card.style.transition = 'all 0.8s cubic-bezier(0.23, 1, 0.32, 1)';
+                });
+                
+                loadTrack(currentTrackIndex);
+                updateCardsDisplay();
+            }
+        });
+
+        // 加载音轨
+        function loadTrack(index) {
+            const track = tracks[index];
+            if (!track) return;
+
+            audioPlayer.src = track.audio;
+            playerImage.src = track.image;
+            playerTitle.textContent = track.title;
+
+            // 重置播放状态
+            isPlaying = false;
+            playBtn.textContent = '▶';
+            progressFill.style.width = '0%';
+            currentTimeDisplay.textContent = '0:00';
+        }
+
+        // 更新卡片显示
+        function updateCardsDisplay() {
+            const allCards = document.querySelectorAll('.card');
+            const allContainers = document.querySelectorAll('.cards-container');
+
+            // 清除所有卡片和容器
+            allCards.forEach(card => card.remove());
+            allContainers.forEach(container => container.remove());
+
+            // 重新创建容器
+            const mainContainer = document.getElementById('mainContainer');
+            const musicPlayer = document.querySelector('.music-player');
+
+            // 左侧容器
+            const leftContainer = document.createElement('div');
+            leftContainer.className = 'cards-container';
+
+            // 右侧容器
+            const rightContainer = document.createElement('div');
+            rightContainer.className = 'cards-container';
+
+            // 创建左侧卡片
+            const leftIndex2 = (currentTrackIndex - 2 + tracks.length) % tracks.length;
+            const leftIndex1 = (currentTrackIndex - 1 + tracks.length) % tracks.length;
+
+            const leftCard2 = createCard(leftIndex2, 'left-2');
+            const leftCard1 = createCard(leftIndex1, 'left-1');
+
+            leftContainer.appendChild(leftCard2);
+            leftContainer.appendChild(leftCard1);
+
+            // 创建右侧卡片
+            const rightIndex1 = (currentTrackIndex + 1) % tracks.length;
+            const rightIndex2 = (currentTrackIndex + 2) % tracks.length;
+
+            const rightCard1 = createCard(rightIndex1, 'right-1');
+            const rightCard2 = createCard(rightIndex2, 'right-2');
+
+            rightContainer.appendChild(rightCard1);
+            rightContainer.appendChild(rightCard2);
+
+            // 插入到主容器
+            mainContainer.insertBefore(leftContainer, musicPlayer);
+            mainContainer.appendChild(rightContainer);
+        }
+
+        // 创建卡片元素
+        function createCard(trackIndex, className) {
+            const track = tracks[trackIndex];
+            const card = document.createElement('div');
+            card.className = `card ${className}`;
+            card.setAttribute('data-audio', track.audio);
+            card.setAttribute('data-title', track.title);
+            card.style.backgroundImage = `url('${track.image}')`;
+            card.textContent = track.text;
+            return card;
+        }
+
+        // 播放/暂停
+        playBtn.addEventListener('click', () => {
+            if (isPlaying) {
+                audioPlayer.pause();
+                playBtn.textContent = '▶';
+            } else {
+                audioPlayer.play();
+                playBtn.textContent = '⏸';
+            }
+            isPlaying = !isPlaying;
+        });
+
+        // 上一首
+        prevBtn.addEventListener('click', () => {
+            // 添加平滑过渡效果
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                card.style.transition = 'all 0.8s cubic-bezier(0.23, 1, 0.32, 1)';
+            });
+            
+            currentTrackIndex = (currentTrackIndex - 1 + tracks.length) % tracks.length;
+            loadTrack(currentTrackIndex);
+            updateCardsDisplay();
+            if (isPlaying) {
+                audioPlayer.play();
+            }
+        });
+
+        // 下一首
+        nextBtn.addEventListener('click', () => {
+            // 添加平滑过渡效果
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                card.style.transition = 'all 0.8s cubic-bezier(0.23, 1, 0.32, 1)';
+            });
+            
+            currentTrackIndex = (currentTrackIndex + 1) % tracks.length;
+            loadTrack(currentTrackIndex);
+            updateCardsDisplay();
+            if (isPlaying) {
+                audioPlayer.play();
+            }
+        });
+
+        // 进度条点击
+        progressBar.addEventListener('click', (e) => {
+            const rect = progressBar.getBoundingClientRect();
+            const percent = (e.clientX - rect.left) / rect.width;
+            const newTime = percent * audioPlayer.duration;
+            if (!isNaN(newTime)) {
+                audioPlayer.currentTime = newTime;
+            }
+        });
+
+        // 音量控制
+        volumeSlider.addEventListener('click', (e) => {
+            const rect = volumeSlider.getBoundingClientRect();
+            const percent = (e.clientX - rect.left) / rect.width;
+            audioPlayer.volume = percent;
+            volumeFill.style.width = (percent * 100) + '%';
+        });
+
+        // 音频事件监听
+        audioPlayer.addEventListener('loadedmetadata', () => {
+            totalTimeDisplay.textContent = formatTime(audioPlayer.duration);
+        });
+
+        audioPlayer.addEventListener('timeupdate', () => {
+            if (audioPlayer.duration) {
+                const percent = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+                progressFill.style.width = percent + '%';
+                currentTimeDisplay.textContent = formatTime(audioPlayer.currentTime);
+            }
+        });
+
+        audioPlayer.addEventListener('ended', () => {
+            // 自动播放下一首
+            nextBtn.click();
+        });
+
+        // 格式化时间
+        function formatTime(seconds) {
+            if (isNaN(seconds)) return '0:00';
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return mins + ':' + (secs < 10 ? '0' : '') + secs;
+        }
+
+        // 初始化音量
+        audioPlayer.volume = 0.5;
+        volumeFill.style.width = '50%';
+    </script>
+</body>
+
+</html>

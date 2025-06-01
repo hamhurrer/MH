@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAS-焦虑自评量表</title>
+    <style>
+        body {
+			 background: linear-gradient(to bottom right,#fdfcfb,#e2d1c3);
+            font-family: Arial, sans - serif;
+            margin: 0;
+            padding: 0;
+        }
+		
+		 header {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				padding: 0px 30px;
+				display: flex;
+				justify-content: flex-start;
+				align-items: center;
+				z-index: 100;
+				margin: 0; 
+			}
+
+			.Home a{
+				padding: 6px 15px;
+                color:#6D8485;
+				border-radius: 20px;
+				margin: 0 10px;
+				font-weight: 600;
+				text-decoration: none;
+			}
+			.Home a:hover{
+                background: #6D8485;
+                color: #fff;
+			}
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-top: 20px;
+        }
+
+        form {
+            background:  linear-gradient(to bottom right,#fdfcfb,#e2d1c3);
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			display: grid;
+            gap: 10px;
+        }
+
+       .question {
+            margin-bottom: 20px;
+		  
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="radio"] {
+            margin-right: 5px;
+            display: inline-flex;
+        }
+        #answers{
+            display:inline-flex;
+            padding: 20px;  
+        }
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+         #result {
+            background-color: #fff;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;}
+    </style>
+</head>
+
+<body>
+	<header>
+       		<h2 class="Home"><a href="psych.html">Back</a></h2>
+		</header>
+    <h1>SAS - 焦虑自评量表</h1>
+    <form id="scl90Form">
+        <div class="question">
+            <label>1. 我觉得比平常容易紧张和着急</label>
+            <div id="answers">
+            <input type="radio" name="q1" value="1"> 没有或很少时间<br>
+            <input type="radio" name="q1" value="2"> 小部分时间<br>
+            <input type="radio" name="q1" value="3"> 相当多时间<br>
+            <input type="radio" name="q1" value="4"> 绝大部分或全部时间<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>2. 我无缘无故地感到害怕</label>
+            <div id="answers">
+            <input type="radio" name="q1" value="1"> 没有或很少时间<br>
+            <input type="radio" name="q1" value="2"> 小部分时间<br>
+            <input type="radio" name="q1" value="3"> 相当多时间<br>
+            <input type="radio" name="q1" value="4"> 绝大部分或全部时间<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>3. 我容易心里烦乱或觉得惊恐</label>
+            <div id="answers">
+            <input type="radio" name="q1" value="1"> 没有或很少时间<br>
+            <input type="radio" name="q1" value="2"> 小部分时间<br>
+            <input type="radio" name="q1" value="3"> 相当多时间<br>
+            <input type="radio" name="q1" value="4"> 绝大部分或全部时间<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>4. 我觉得我可能将要发疯</label>
+            <div id="answers">
+            <input type="radio" name="q1" value="1"> 没有或很少时间<br>
+            <input type="radio" name="q1" value="2"> 小部分时间<br>
+            <input type="radio" name="q1" value="3"> 相当多时间<br>
+            <input type="radio" name="q1" value="4"> 绝大部分或全部时间<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>5. 我觉得一切都很好，也不会发生什么不幸</label>
+            <div id="answers">
+            <input type="radio" name="q1" value="4"> 没有或很少时间<br>
+            <input type="radio" name="q1" value="3"> 小部分时间<br>
+            <input type="radio" name="q1" value="2"> 相当多时间<br>
+            <input type="radio" name="q1" value="1"> 绝大部分或全部时间<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>6. 我手脚发抖打颤</label>
+            <div id="answers">
+            <input type="radio" name="q1" value="1"> 没有或很少时间<br>
+            <input type="radio" name="q1" value="2"> 小部分时间<br>
+            <input type="radio" name="q1" value="3"> 相当多时间<br>
+            <input type="radio" name="q1" value="4"> 绝大部分或全部时间<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>7. 我因为头痛、颈痛和背痛而苦恼</label>
+            <div id="answers">
+            <input type="radio" name="q1" value="1"> 没有或很少时间<br>
+            <input type="radio" name="q1" value="2"> 小部分时间<br>
+            <input type="radio" name="q1" value="3"> 相当多时间<br>
+            <input type="radio" name="q1" value="4"> 绝大部分或全部时间<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>8. 我感觉容易衰弱和疲乏</label>
+            <div id="answers">
+            <input type="radio" name="q1" value="1"> 没有或很少时间<br>
+            <input type="radio" name="q1" value="2"> 小部分时间<br>
+            <input type="radio" name="q1" value="3"> 相当多时间<br>
+            <input type="radio" name="q1" value="4"> 绝大部分或全部时间<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>9. 我觉得心平气和，并且容易安静坐着</label>
+            <div id="answers">
+            <input type="radio" name="q1" value="4"> 没有或很少时间<br>
+            <input type="radio" name="q1" value="3"> 小部分时间<br>
+            <input type="radio" name="q1" value="2"> 相当多时间<br>
+            <input type="radio" name="q1" value="1"> 绝大部分或全部时间<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>10. 我觉得心跳得很快</label>
+            <div id="answers">
+            <input type="radio" name="q1" value="1"> 没有或很少时间<br>
+            <input type="radio" name="q1" value="2"> 小部分时间<br>
+            <input type="radio" name="q1" value="3"> 相当多时间<br>
+            <input type="radio" name="q1" value="4"> 绝大部分或全部时间<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>11. 我因为一阵阵头晕而苦恼</label>
+            <div id="answers">
+            <input type="radio" name="q1" value="1"> 没有或很少时间<br>
+            <input type="radio" name="q1" value="2"> 小部分时间<br>
+            <input type="radio" name="q1" value="3"> 相当多时间<br>
+            <input type="radio" name="q1" value="4"> 绝大部分或全部时间<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>12. 我有晕倒发作，或觉得要晕倒似的</label>
+            <div id="answers">
+            <input type="radio" name="q1" value="1"> 没有或很少时间<br>
+            <input type="radio" name="q1" value="2"> 小部分时间<br>
+            <input type="radio" name="q1" value="3"> 相当多时间<br>
+            <input type="radio" name="q1" value="4"> 绝大部分或全部时间<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>13. 我吸气呼气都感到很容易</label>
+            <div id="answers">
+            <input type="radio" name="q1" value="4"> 没有或很少时间<br>
+            <input type="radio" name="q1" value="3"> 小部分时间<br>
+            <input type="radio" name="q1" value="2"> 相当多时间<br>
+            <input type="radio" name="q1" value="1"> 绝大部分或全部时间<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>14. 我手脚麻木和刺痛</label>
+            <div id="answers">
+            <input type="radio" name="q1" value="1"> 没有或很少时间<br>
+            <input type="radio" name="q1" value="2"> 小部分时间<br>
+            <input type="radio" name="q1" value="3"> 相当多时间<br>
+            <input type="radio" name="q1" value="4"> 绝大部分或全部时间<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>15. 我因为胃痛和消化不良而苦恼</label>
+            <div id="answers">
+            <input type="radio" name="q1" value="1"> 没有或很少时间<br>
+            <input type="radio" name="q1" value="2"> 小部分时间<br>
+            <input type="radio" name="q1" value="3"> 相当多时间<br>
+            <input type="radio" name="q1" value="4"> 绝大部分或全部时间<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>16. 我常常要小便</label>
+            <div id="answers">
+            <input type="radio" name="q1" value="1"> 没有或很少时间<br>
+            <input type="radio" name="q1" value="2"> 小部分时间<br>
+            <input type="radio" name="q1" value="3"> 相当多时间<br>
+            <input type="radio" name="q1" value="4"> 绝大部分或全部时间<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>17. 我的手脚常常是干燥温暖的</label>
+            <div id="answers">
+            <input type="radio" name="q1" value="4"> 没有或很少时间<br>
+            <input type="radio" name="q1" value="3"> 小部分时间<br>
+            <input type="radio" name="q1" value="2"> 相当多时间<br>
+            <input type="radio" name="q1" value="1"> 绝大部分或全部时间<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>18. 我脸红发热</label>
+            <div id="answers">
+            <input type="radio" name="q1" value="1"> 没有或很少时间<br>
+            <input type="radio" name="q1" value="2"> 小部分时间<br>
+            <input type="radio" name="q1" value="3"> 相当多时间<br>
+            <input type="radio" name="q1" value="4"> 绝大部分或全部时间<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>19. 我容易入睡并且一夜睡得很好</label>
+            <div id="answers">
+            <input type="radio" name="q1" value="4"> 没有或很少时间<br>
+            <input type="radio" name="q1" value="3"> 小部分时间<br>
+            <input type="radio" name="q1" value="2"> 相当多时间<br>
+            <input type="radio" name="q1" value="1"> 绝大部分或全部时间<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>20. 我做恶梦</label>
+            <div id="answers">
+            <input type="radio" name="q1" value="1"> 没有或很少时间<br>
+            <input type="radio" name="q1" value="2"> 小部分时间<br>
+            <input type="radio" name="q1" value="3"> 相当多时间<br>
+            <input type="radio" name="q1" value="4"> 绝大部分或全部时间<br>
+            </div>
+        </div>
+        
+        <button type="button" onclick="calculateScore()">提交</button>
+    </form>
+    <div id="result"></div>
+    <script>
+        function calculateScore() {
+            const form = document.getElementById('scl90Form');
+            let score = 0;
+            for (let i = 1; i <= 20; i++) {
+                const question = `q${i}`;
+                const selectedOption = form.querySelector(`input[name="${question}"]:checked`);
+                if (selectedOption) {
+                    score += parseInt(selectedOption.value);
+                } else {
+                    alert(`请回答问题 ${i}`);
+                    return;
+                }
+            }
+            let assessment = '';
+            if (score <= 20) {
+                assessment = '你的心理健康状况良好，目前没有明显的心理症状困扰。建议继续保持健康的生活方式和积极的心态。';
+            } else if (score <= 30) {
+                assessment = '你可能存在一些轻微的心理症状，不过不用过于担心。可以尝试通过适当的放松活动，如运动、听音乐等来缓解。';
+            } else if (score <= 40) {
+                assessment = '你目前的心理状态可能存在一定程度的问题，建议你多关注自己的情绪变化，也可以与身边信任的人交流沟通。若情况持续或加重，建议寻求专业心理咨询师的帮助。';
+            } else {
+                assessment = '你可能存在较为严重的心理症状，建议尽快寻求专业心理咨询师或心理医生的帮助，以便进行更详细的评估和诊断。';
+            }
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = `你的得分是：${score} 分。<br>${assessment}`;
+        }
+    </script>
+</body>
+
+</html>
+    
+			

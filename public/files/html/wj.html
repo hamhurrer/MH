@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCL - 90 症状自评量表</title>
+    <style>
+        body {
+			 background: linear-gradient(to bottom right,#fdfcfb,#e2d1c3);
+            font-family: Arial, sans - serif;
+            margin: 0;
+            padding: 0;
+        }
+		
+		 header {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				padding: 0px 30px;
+				display: flex;
+				justify-content: flex-start;
+				align-items: center;
+				z-index: 100;
+				margin: 0; 
+			}
+
+			.Home a{
+				padding: 6px 15px;
+                color:#6D8485;
+				border-radius: 20px;
+				margin: 0 10px;
+				font-weight: 600;
+				text-decoration: none;
+			}
+			.Home a:hover{
+	background: #6D8485;
+	color: #fff;
+			}
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-top: 20px;
+        }
+
+        form {
+            background: linear-gradient(to bottom right,#fdfcfb,#e2d1c3);
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			display: grid;
+            gap: 10px;
+        }
+
+       .question {
+            margin-bottom: 20px;
+		   
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+        #answers{
+            display:inline-flex;
+            padding: 20px;  
+        }
+
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+         #result {
+            background-color: #fff;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;}
+    </style>
+</head>
+
+<body>
+	<header>
+       		<h2 class="Home"><a href="psych.html">Back</a></h2>
+		</header>
+    <h1>SCL - 90 症状自评量表</h1>
+    <form id="scl90Form">
+        <div class="question">
+            <label>1. 头痛</label>
+            <div id="answers">
+            <input type="radio" name="q1" value="1"> 从无<br>
+            <input type="radio" name="q1" value="2"> 轻度<br>
+            <input type="radio" name="q1" value="3"> 中度<br>
+            <input type="radio" name="q1" value="4"> 偏重<br>
+            <input type="radio" name="q1" value="5"> 严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>2. 神经过敏，心中不踏实</label>
+            <div id="answers">
+            <input type="radio" name="q2" value="1"> 从无<br>
+            <input type="radio" name="q2" value="2"> 轻度<br>
+            <input type="radio" name="q2" value="3"> 中度<br>
+            <input type="radio" name="q2" value="4"> 偏重<br>
+            <input type="radio" name="q2" value="5"> 严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>3. 头脑中有不必要的想法或字句盘旋</label>
+            <div id="answers">
+                <input type="radio" name="q3" value="1"> 从无<br>
+                <input type="radio" name="q3" value="2"> 轻度<br>
+                <input type="radio" name="q3" value="3"> 中度<br>
+                <input type="radio" name="q3" value="4"> 偏重<br>
+                <input type="radio" name="q3" value="5"> 严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>4. 头昏或昏倒</label>
+            <div id="answers">
+                <input type="radio" name="q4" value="1"> 从无<br>
+                <input type="radio" name="q4" value="2"> 轻度<br>
+                <input type="radio" name="q4" value="3"> 中度<br>
+                <input type="radio" name="q4" value="4"> 偏重<br>
+                <input type="radio" name="q4" value="5"> 严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>5. 对异性的兴趣减退</label>
+            <div id="answers">
+                <input type="radio" name="q5" value="1"> 从无<br>
+                <input type="radio" name="q5" value="2"> 轻度<br>
+                <input type="radio" name="q5" value="3"> 中度<br>
+                <input type="radio" name="q5" value="4"> 偏重<br>
+                <input type="radio" name="q5" value="5"> 严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>6. 对旁人责备求全</label>
+            <div id="answers">
+                <input type="radio" name="q6" value="1"> 从无<br>
+                <input type="radio" name="q6" value="2"> 轻度<br>
+                <input type="radio" name="q6" value="3"> 中度<br>
+                <input type="radio" name="q6" value="4"> 偏重<br>
+                <input type="radio" name="q6" value="5"> 严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>7. 感到别人能控制您的思想</label>
+            <div id="answers">
+                <input type="radio" name="q7" value="1"> 从无<br>
+                <input type="radio" name="q7" value="2"> 轻度<br>
+                <input type="radio" name="q7" value="3"> 中度<br>
+                <input type="radio" name="q7" value="4"> 偏重<br>
+                <input type="radio" name="q7" value="5"> 严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>8. 责怪别人制造麻烦</label>
+            <div id="answers">
+                <input type="radio" name="q8" value="1"> 从无<br>
+                <input type="radio" name="q8" value="2"> 轻度<br>
+                <input type="radio" name="q8" value="3"> 中度<br>
+                <input type="radio" name="q8" value="4"> 偏重<br>
+                <input type="radio" name="q8" value="5"> 严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>9. 忘记性大</label>
+            <div id="answers">
+                <input type="radio" name="q9" value="1"> 从无<br>
+                <input type="radio" name="q9" value="2"> 轻度<br>
+                <input type="radio" name="q9" value="3"> 中度<br>
+                <input type="radio" name="q9" value="4"> 偏重<br>
+                <input type="radio" name="q9" value="5"> 严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>10. 担心自己的衣饰整齐及仪态的端正</label>
+            <div id="answers">
+                <input type="radio" name="q10" value="1"> 从无<br>
+                <input type="radio" name="q10" value="2"> 轻度<br>
+                <input type="radio" name="q10" value="3"> 中度<br>
+                <input type="radio" name="q10" value="4"> 偏重<br>
+                <input type="radio" name="q10" value="5"> 严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>11. 容易烦恼和激动</label>
+            <div id="answers">
+                <input type="radio" name="q11" value="1"> 从无<br>
+                <input type="radio" name="q11" value="2"> 轻度<br>
+                <input type="radio" name="q11" value="3"> 中度<br>
+                <input type="radio" name="q11" value="4"> 偏重<br>
+                <input type="radio" name="q11" value="5"> 严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>12. 胸痛</label>
+            <div id="answers">
+                <input type="radio" name="q12" value="1"> 从无<br>
+                <input type="radio" name="q12" value="2"> 轻度<br>
+                <input type="radio" name="q12" value="3"> 中度<br>
+                <input type="radio" name="q12" value="4"> 偏重<br>
+                <input type="radio" name="q12" value="5"> 严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>13. 害怕空旷的场所或街道</label>
+            <div id="answers">
+            <div id="answers">
+                <input type="radio" name="q13" value="1"> 从无<br>
+                <input type="radio" name="q13" value="2"> 轻度<br>
+                <input type="radio" name="q13" value="3"> 中度<br>
+                <input type="radio" name="q13" value="4"> 偏重<br>
+                <input type="radio" name="q13" value="5"> 严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>14. 感到自己的精力下降，活动减慢</label>
+            <div id="answers">
+                <input type="radio" name="q14" value="1"> 从无<br>
+                <input type="radio" name="q14" value="2"> 轻度<br>
+                <input type="radio" name="q14" value="3"> 中度<br>
+                <input type="radio" name="q14" value="4"> 偏重<br>
+                <input type="radio" name="q14" value="5"> 严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>15. 想结束自己的生命</label>
+            <div id="answers">
+            <input type="radio" name="q15" value="1"> 从无<br>
+            <input type="radio" name="q15" value="2"> 轻度<br>
+            <input type="radio" name="q15" value="3"> 中度<br>
+            <input type="radio" name="q15" value="4"> 偏重<br>
+            <input type="radio" name="q15" value="5"> 严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>16. 听到旁人听不到的声音</label>
+            <div id="answers">
+            <input type="radio" name="q16" value="1"> 从无<br>
+            <input type="radio" name="q16" value="2"> 轻度<br>
+            <input type="radio" name="q16" value="3"> 中度<br>
+            <input type="radio" name="q16" value="4"> 偏重<br>
+            <input type="radio" name="q16" value="5"> 严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>17. 发抖</label>
+            <div id="answers">
+            <input type="radio" name="q17" value="1"> 从无<br>
+            <input type="radio" name="q17" value="2"> 轻度<br>
+            <input type="radio" name="q17" value="3"> 中度<br>
+            <input type="radio" name="q17" value="4"> 偏重<br>
+            <input type="radio" name="q17" value="5"> 严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>18. 感到大多数人都不可信任</label>
+            <div id="answers">
+            <input type="radio" name="q18" value="1"> 从无<br>
+            <input type="radio" name="q18" value="2"> 轻度<br>
+            <input type="radio" name="q18" value="3"> 中度<br>
+            <input type="radio" name="q18" value="4"> 偏重<br>
+            <input type="radio" name="q18" value="5"> 严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>19. 胃口不好</label>
+            <div id="answers">
+            <input type="radio" name="q19" value="1"> 从无<br>
+            <input type="radio" name="q19" value="2"> 轻度<br>
+            <input type="radio" name="q19" value="3"> 中度<br>
+            <input type="radio" name="q19" value="4"> 偏重<br>
+            <input type="radio" name="q19" value="5"> 严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>20. 容易哭泣</label>
+            <div id="answers">
+            <input type="radio" name="q20" value="1"> 从无<br>
+            <input type="radio" name="q20" value="2"> 轻度<br>
+            <input type="radio" name="q20" value="3"> 中度<br>
+            <input type="radio" name="q20" value="4"> 偏重<br>
+            <input type="radio" name="q20" value="5">  严重<br>
+            </div>
+
+        </div>
+        <div class="question">
+            <label>21. 同异性相处时感到害羞不自在</label>
+            <div id="answers">
+            <input type="radio" name="q21" value="1"> 从无<br>
+            <input type="radio" name="q21" value="2"> 轻度<br>
+            <input type="radio" name="q21" value="3"> 中度<br>
+            <input type="radio" name="q21" value="4"> 偏重<br>
+            <input type="radio" name="q21" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>22. 感到受骗，中了圈套或有人想抓住您</label>
+            <div id="answers">
+            <input type="radio" name="q22" value="1"> 从无<br>
+            <input type="radio" name="q22" value="2"> 轻度<br>
+            <input type="radio" name="q22" value="3"> 中度<br>
+            <input type="radio" name="q22" value="4"> 偏重<br>
+            <input type="radio" name="q22" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>23. 无缘无故地突然感到害怕</label>
+            <div id="answers">
+            <input type="radio" name="q23" value="1"> 从无<br>
+            <input type="radio" name="q23" value="2"> 轻度<br>
+            <input type="radio" name="q23" value="3"> 中度<br>
+            <input type="radio" name="q23" value="4"> 偏重<br>
+            <input type="radio" name="q23" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>24. 自己不能控制地大发脾气</label>
+            <div id="answers">
+            <input type="radio" name="q24" value="1"> 从无<br>
+            <input type="radio" name="q24" value="2"> 轻度<br>
+            <input type="radio" name="q24" value="3"> 中度<br>
+            <input type="radio" name="q24" value="4"> 偏重<br>
+            <input type="radio" name="q24" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>25. 怕单独出门</label>
+            <div id="answers">
+            <input type="radio" name="q25" value="1"> 从无<br>
+            <input type="radio" name="q25" value="2"> 轻度<br>
+            <input type="radio" name="q25" value="3"> 中度<br>
+            <input type="radio" name="q25" value="4"> 偏重<br>
+            <input type="radio" name="q25" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>26. 经常责怪自己</label>
+            <div id="answers">
+            <input type="radio" name="q26" value="1"> 从无<br>
+            <input type="radio" name="q26" value="2"> 轻度<br>
+            <input type="radio" name="q26" value="3"> 中度<br>
+            <input type="radio" name="q26" value="4"> 偏重<br>
+            <input type="radio" name="q26" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>27. 腰痛</label>
+            <div id="answers">
+            <input type="radio" name="q27" value="1"> 从无<br>
+            <input type="radio" name="q27" value="2"> 轻度<br>
+            <input type="radio" name="q27" value="3"> 中度<br>
+            <input type="radio" name="q27" value="4"> 偏重<br>
+            <input type="radio" name="q27" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>28. 感到难以完成任务</label>
+            <div id="answers">
+            <input type="radio" name="q28" value="1"> 从无<br>
+            <input type="radio" name="q28" value="2"> 轻度<br>
+            <input type="radio" name="q28" value="3"> 中度<br>
+            <input type="radio" name="q28" value="4"> 偏重<br>
+            <input type="radio" name="q28" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>29. 感到孤独</label>
+            <div id="answers">
+            <input type="radio" name="q29" value="1"> 从无<br>
+            <input type="radio" name="q29" value="2"> 轻度<br>
+            <input type="radio" name="q29" value="3"> 中度<br>
+            <input type="radio" name="q29" value="4"> 偏重<br>
+            <input type="radio" name="q29" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>30. 感到苦闷</label>
+            <div id="answers">
+            <input type="radio" name="q30" value="1"> 从无<br>
+            <input type="radio" name="q30" value="2"> 轻度<br>
+            <input type="radio" name="q30" value="3"> 中度<br>
+            <input type="radio" name="q30" value="4"> 偏重<br>
+            <input type="radio" name="q30" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>31. 过分担忧</label>
+            <div id="answers">
+            <input type="radio" name="q31" value="1"> 从无<br>
+            <input type="radio" name="q31" value="2"> 轻度<br>
+            <input type="radio" name="q31" value="3"> 中度<br>
+            <input type="radio" name="q31" value="4"> 偏重<br>
+            <input type="radio" name="q31" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>32. 对事物不感兴趣</label>
+            <div id="answers">
+            <input type="radio" name="q32" value="1"> 从无<br>
+            <input type="radio" name="q32" value="2"> 轻度<br>
+            <input type="radio" name="q32" value="3"> 中度<br>
+            <input type="radio" name="q32" value="4"> 偏重<br>
+            <input type="radio" name="q32" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>33. 感到害怕</label>
+            <div id="answers">
+            <input type="radio" name="q33" value="1"> 从无<br>
+            <input type="radio" name="q33" value="2"> 轻度<br>
+            <input type="radio" name="q33" value="3"> 中度<br>
+            <input type="radio" name="q33" value="4"> 偏重<br>
+            <input type="radio" name="q33" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>34. 我的感情容易受到伤害</label>
+            <div id="answers">
+            <input type="radio" name="q34" value="1"> 从无<br>
+            <input type="radio" name="q34" value="2"> 轻度<br>
+            <input type="radio" name="q34" value="3"> 中度<br>
+            <input type="radio" name="q34" value="4"> 偏重<br>
+            <input type="radio" name="q34" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>35. 旁人能知道您的私下想法</label>
+            <div id="answers">
+            <input type="radio" name="q35" value="1"> 从无<br>
+            <input type="radio" name="q35" value="2"> 轻度<br>
+            <input type="radio" name="q35" value="3"> 中度<br>
+            <input type="radio" name="q35" value="4"> 偏重<br>
+            <input type="radio" name="q35" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>36. 感到别人不理解您不同情您</label>
+            <div id="answers">
+                <input type="radio" name="q36" value="1"> 从无<br>
+                <input type="radio" name="q36" value="2"> 轻度<br>
+                <input type="radio" name="q36" value="3"> 中度<br>
+                <input type="radio" name="q36" value="4"> 偏重<br>
+                <input type="radio" name="q36" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>37. 感到人们对您不友好，不喜欢您</label>
+            <div id="answers">
+                <input type="radio" name="q37" value="1"> 从无<br>
+                <input type="radio" name="q37" value="2"> 轻度<br>
+                <input type="radio" name="q37" value="3"> 中度<br>
+                <input type="radio" name="q37" value="4"> 偏重<br>
+                <input type="radio" name="q37" value="5"> 严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>38. 做事必须做得很慢以保证做得正确</label>
+            <div id="answers">
+            <input type="radio" name="q38" value="1"> 从无<br>
+            <input type="radio" name="q38" value="2"> 轻度<br>
+            <input type="radio" name="q38" value="3"> 中度<br>
+            <input type="radio" name="q38" value="4"> 偏重<br>
+            <input type="radio" name="q38" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>39. 心跳得很厉害</label>
+            <div id="answers">
+            <input type="radio" name="q39" value="1"> 从无<br>
+            <input type="radio" name="q39" value="2"> 轻度<br>
+            <input type="radio" name="q39" value="3"> 中度<br>
+            <input type="radio" name="q39" value="4"> 偏重<br>
+            <input type="radio" name="q39" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>40. 恶心或胃部不舒服</label>
+            <div id="answers">
+            <input type="radio" name="q40" value="1"> 从无<br>
+            <input type="radio" name="q40" value="2"> 轻度<br>
+            <input type="radio" name="q40" value="3"> 中度<br>
+            <input type="radio" name="q40" value="4"> 偏重<br>
+            <input type="radio" name="q40" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>41. 感到比不上他人</label>
+            <div id="answers">
+            <input type="radio" name="q41" value="1"> 从无<br>
+            <input type="radio" name="q41" value="2"> 轻度<br>
+            <input type="radio" name="q41" value="3"> 中度<br>
+            <input type="radio" name="q41" value="4"> 偏重<br>
+            <input type="radio" name="q41" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>42. 肌肉酸痛</label>
+            <div id="answers">
+            <input type="radio" name="q42" value="1"> 从无<br>
+            <input type="radio" name="q42" value="2"> 轻度<br>
+            <input type="radio" name="q42" value="3"> 中度<br>
+            <input type="radio" name="q42" value="4"> 偏重<br>
+            <input type="radio" name="q42" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>43. 感到有人在监视您谈论您</label>
+            <div id="answers">
+            <input type="radio" name="q43" value="1"> 从无<br>
+            <input type="radio" name="q43" value="2"> 轻度<br>
+            <input type="radio" name="q43" value="3"> 中度<br>
+            <input type="radio" name="q43" value="4"> 偏重<br>
+            <input type="radio" name="q43" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>44. 难以入睡</label>
+            <div id="answers">
+            <input type="radio" name="q44" value="1"> 从无<br>
+            <input type="radio" name="q44" value="2"> 轻度<br>
+            <input type="radio" name="q44" value="3"> 中度<br>
+            <input type="radio" name="q44" value="4"> 偏重<br>
+            <input type="radio" name="q44" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>45. 做事必须反复检查</label>
+            <div id="answers">
+            <input type="radio" name="q45" value="1"> 从无<br>
+            <input type="radio" name="q45" value="2"> 轻度<br>
+            <input type="radio" name="q45" value="3"> 中度<br>
+            <input type="radio" name="q45" value="4"> 偏重<br>
+            <input type="radio" name="q45" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>46. 难以作出决定</label>
+            <div id="answers">
+            <input type="radio" name="q46" value="1"> 从无<br>
+            <input type="radio" name="q46" value="2"> 轻度<br>
+            <input type="radio" name="q46" value="3"> 中度<br>
+            <input type="radio" name="q46" value="4"> 偏重<br>
+            <input type="radio" name="q46" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>47. 怕乘电车、公共汽车、地铁或火车</label>
+            <div id="answers">
+            <input type="radio" name="q47" value="1"> 从无<br>
+            <input type="radio" name="q47" value="2"> 轻度<br>
+            <input type="radio" name="q47" value="3"> 中度<br>
+            <input type="radio" name="q47" value="4"> 偏重<br>
+            <input type="radio" name="q47" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>48. 呼吸有困难</label>
+            <div id="answers">
+            <input type="radio" name="q48" value="1"> 从无<br>
+            <input type="radio" name="q48" value="2"> 轻度<br>
+            <input type="radio" name="q48" value="3"> 中度<br>
+            <input type="radio" name="q48" value="4"> 偏重<br>
+            <input type="radio" name="q48" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>49. 一阵阵发冷或发热</label>
+            <div id="answers">
+            <input type="radio" name="q49" value="1"> 从无<br>
+            <input type="radio" name="q49" value="2"> 轻度<br>
+            <input type="radio" name="q49" value="3"> 中度<br>
+            <input type="radio" name="q49" value="4"> 偏重<br>
+            <input type="radio" name="q49" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>50. 因为感到害怕而避开某些东西，场合或活动</label>
+            <div id="answers">
+            <input type="radio" name="q50" value="1"> 从无<br>
+            <input type="radio" name="q50" value="2"> 轻度<br>
+            <input type="radio" name="q50" value="3"> 中度<br>
+            <input type="radio" name="q50" value="4"> 偏重<br>
+            <input type="radio" name="q50" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>51. 脑子变空了</label>
+            <div id="answers">
+            <input type="radio" name="q51" value="1"> 从无<br>
+            <input type="radio" name="q51" value="2"> 轻度<br>
+            <input type="radio" name="q51" value="3"> 中度<br>
+            <input type="radio" name="q51" value="4"> 偏重<br>
+            <input type="radio" name="q51" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>52. 身体发麻或刺痛</label>
+            <div id="answers">
+            <input type="radio" name="q52" value="1"> 从无<br>
+            <input type="radio" name="q52" value="2"> 轻度<br>
+            <input type="radio" name="q52" value="3"> 中度<br>
+            <input type="radio" name="q52" value="4"> 偏重<br>
+            <input type="radio" name="q52" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>53. 喉咙有梗塞感</label>
+            <div id="answers">
+            <input type="radio" name="q53" value="1"> 从无<br>
+            <input type="radio" name="q53" value="2"> 轻度<br>
+            <input type="radio" name="q53" value="3"> 中度<br>
+            <input type="radio" name="q53" value="4"> 偏重<br>
+            <input type="radio" name="q53" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>54. 感到前途没有希望</label>
+            <div id="answers">
+            <input type="radio" name="q54" value="1"> 从无<br>
+            <input type="radio" name="q54" value="2"> 轻度<br>
+            <input type="radio" name="q54" value="3"> 中度<br>
+            <input type="radio" name="q54" value="4"> 偏重<br>
+            <input type="radio" name="q54" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>55. 不能集中注意力</label>
+            <div id="answers">
+             <input type="radio" name="q55" value="1"> 从无<br>
+            <input type="radio" name="q55" value="2"> 轻度<br>
+            <input type="radio" name="q55" value="3"> 中度<br>
+            <input type="radio" name="q55" value="4"> 偏重<br>
+            <input type="radio" name="q55" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>56. 感到身体的某一部分软弱无力</label>
+            <div id="answers">
+            <input type="radio" name="q56" value="1"> 从无<br>
+            <input type="radio" name="q56" value="2"> 轻度<br>
+            <input type="radio" name="q56" value="3"> 中度<br>
+            <input type="radio" name="q56" value="4"> 偏重<br>
+            <input type="radio" name="q56" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>57. 感到紧张或容易紧张</label>
+            <div id="answers">
+            <input type="radio" name="q57" value="1"> 从无<br>
+            <input type="radio" name="q57" value="2"> 轻度<br>
+            <input type="radio" name="q57" value="3"> 中度<br>
+            <input type="radio" name="q57" value="4"> 偏重<br>
+            <input type="radio" name="q57" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>58. 感到手或脚发沉</label>
+            <div id="answers">
+            <input type="radio" name="q58" value="1"> 从无<br>
+            <input type="radio" name="q58" value="2"> 轻度<br>
+            <input type="radio" name="q58" value="3"> 中度<br>
+            <input type="radio" name="q58" value="4"> 偏重<br>
+            <input type="radio" name="q58" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>59. 想到有关死亡的事</label>
+            <div id="answers">
+            <input type="radio" name="q59" value="1"> 从无<br>
+            <input type="radio" name="q59" value="2"> 轻度<br>
+            <input type="radio" name="q59" value="3"> 中度<br>
+            <input type="radio" name="q59" value="4"> 偏重<br>
+            <input type="radio" name="q59" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>60. 吃得太多</label>
+            <div id="answers">
+            <input type="radio" name="q60" value="1"> 从无<br>
+            <input type="radio" name="q60" value="2"> 轻度<br>
+            <input type="radio" name="q60" value="3"> 中度<br>
+            <input type="radio" name="q60" value="4"> 偏重<br>
+            <input type="radio" name="q60" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>61. 当别人看着您或谈论您时感到不自在</label>
+            <div id="answers">
+            <input type="radio" name="q61" value="1"> 从无<br>
+            <input type="radio" name="q61" value="2"> 轻度<br>
+            <input type="radio" name="q61" value="3"> 中度<br>
+            <input type="radio" name="q61" value="4"> 偏重<br>
+            <input type="radio" name="q61" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>62. 有一些不属于您自己的想法</label>
+            <div id="answers">
+            <input type="radio" name="q62" value="1"> 从无<br>
+            <input type="radio" name="q62" value="2"> 轻度<br>
+            <input type="radio" name="q62" value="3"> 中度<br>
+            <input type="radio" name="q62" value="4"> 偏重<br>
+            <input type="radio" name="q62" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>63. 有想打人或伤害他人的冲动</label>
+            <div id="answers">
+            <input type="radio" name="q63" value="1"> 从无<br>
+            <input type="radio" name="q63" value="2"> 轻度<br>
+            <input type="radio" name="q63" value="3"> 中度<br>
+            <input type="radio" name="q63" value="4"> 偏重<br>
+            <input type="radio" name="q63" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>64. 醒得太早</label>
+            <div id="answers">
+            <input type="radio" name="q64" value="1"> 从无<br>
+            <input type="radio" name="q64" value="2"> 轻度<br>
+            <input type="radio" name="q64" value="3"> 中度<br>
+            <input type="radio" name="q64" value="4"> 偏重<br>
+            <input type="radio" name="q64" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>65. 必须反复洗手、点数目或触摸某些东西</label>
+            <div id="answers">
+            <input type="radio" name="q65" value="1"> 从无<br>
+            <input type="radio" name="q65" value="2"> 轻度<br>
+            <input type="radio" name="q65" value="3"> 中度<br>
+            <input type="radio" name="q65" value="4"> 偏重<br>
+            <input type="radio" name="q65" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>66. 睡得不稳不深</label>
+            <div id="answers">
+            <input type="radio" name="q66" value="1"> 从无<br>
+            <input type="radio" name="q66" value="2"> 轻度<br>
+            <input type="radio" name="q66" value="3"> 中度<br>
+            <input type="radio" name="q66" value="4"> 偏重<br>
+            <input type="radio" name="q66" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>67. 有想摔坏或破坏东西的冲动</label>
+            <div id="answers">
+            <input type="radio" name="q67" value="1"> 从无<br>
+            <input type="radio" name="q67" value="2"> 轻度<br>
+            <input type="radio" name="q67" value="3"> 中度<br>
+            <input type="radio" name="q67" value="4"> 偏重<br>
+            <input type="radio" name="q67" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>68. 有一些别人没有的想法或念头</label>
+            <div id="answers">
+            <input type="radio" name="q68" value="1"> 从无<br>
+            <input type="radio" name="q68" value="2"> 轻度<br>
+            <input type="radio" name="q68" value="3"> 中度<br>
+            <input type="radio" name="q68" value="4"> 偏重<br>
+            <input type="radio" name="q68" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>69. 感到对别人神经过敏</label>
+            <div id="answers">
+            <input type="radio" name="q69" value="1"> 从无<br>
+            <input type="radio" name="q69" value="2"> 轻度<br>
+            <input type="radio" name="q69" value="3"> 中度<br>
+            <input type="radio" name="q69" value="4"> 偏重<br>
+            <input type="radio" name="q69" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>70. 在商店或电影院等人多的地方感到不自在</label>
+            <div id="answers">
+            <input type="radio" name="q70" value="1"> 从无<br>
+            <input type="radio" name="q70" value="2"> 轻度<br>
+            <input type="radio" name="q70" value="3"> 中度<br>
+            <input type="radio" name="q70" value="4"> 偏重<br>
+            <input type="radio" name="q70" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>71. 感到任何事情都很困难</label>
+            <div id="answers">
+            <input type="radio" name="q71" value="1"> 从无<br>
+            <input type="radio" name="q71" value="2"> 轻度<br>
+            <input type="radio" name="q71" value="3"> 中度<br>
+            <input type="radio" name="q71" value="4"> 偏重<br>
+            <input type="radio" name="q71" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>72. 一阵阵恐惧或惊恐</label>
+            <div id="answers">
+            <input type="radio" name="q72" value="1"> 从无<br>
+            <input type="radio" name="q72" value="2"> 轻度<br>
+            <input type="radio" name="q72" value="3"> 中度<br>
+            <input type="radio" name="q72" value="4"> 偏重<br>
+            <input type="radio" name="q72" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>73. 感到在公共场合吃东西很不舒服</label>
+            <div id="answers">
+            <input type="radio" name="q73" value="1"> 从无<br>
+            <input type="radio" name="q73" value="2"> 轻度<br>
+            <input type="radio" name="q73" value="3"> 中度<br>
+            <input type="radio" name="q73" value="4"> 偏重<br>
+            <input type="radio" name="q73" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>74. 经常与人争论</label>
+            <div id="answers">
+            <input type="radio" name="q74" value="1"> 从无<br>
+            <input type="radio" name="q74" value="2"> 轻度<br>
+            <input type="radio" name="q74" value="3"> 中度<br>
+            <input type="radio" name="q74" value="4"> 偏重<br>
+            <input type="radio" name="q74" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>75. 单独一人时神经很紧张</label>
+            <div id="answers">
+            <input type="radio" name="q75" value="1"> 从无<br>
+            <input type="radio" name="q75" value="2"> 轻度<br>
+            <input type="radio" name="q75" value="3"> 中度<br>
+            <input type="radio" name="q75" value="4"> 偏重<br>
+            <input type="radio" name="q75" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>76. 别人对您的成绩没有作出恰当的评价</label>
+            <div id="answers">
+            <input type="radio" name="q76" value="1"> 从无<br>
+            <input type="radio" name="q76" value="2"> 轻度<br>
+            <input type="radio" name="q76" value="3"> 中度<br>
+            <input type="radio" name="q76" value="4"> 偏重<br>
+            <input type="radio" name="q76" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>77. 即使和别人在一起也感到孤单</label>
+            <div id="answers">
+            <input type="radio" name="q77" value="1"> 从无<br>
+            <input type="radio" name="q77" value="2"> 轻度<br>
+            <input type="radio" name="q77" value="3"> 中度<br>
+            <input type="radio" name="q77" value="4"> 偏重<br>
+            <input type="radio" name="q77" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>78. 感到坐立不安心神不定</label>
+            <div id="answers">
+            <input type="radio" name="q78" value="1"> 从无<br>
+            <input type="radio" name="q78" value="2"> 轻度<br>
+            <input type="radio" name="q78" value="3"> 中度<br>
+            <input type="radio" name="q78" value="4"> 偏重<br>
+            <input type="radio" name="q78" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>79. 感到自己没有什么价值</label>
+            <div id="answers">
+            <input type="radio" name="q79" value="1"> 从无<br>
+            <input type="radio" name="q79" value="2"> 轻度<br>
+            <input type="radio" name="q79" value="3"> 中度<br>
+            <input type="radio" name="q79" value="4"> 偏重<br>
+            <input type="radio" name="q79" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>80. 感到熟悉的东西变成陌生或不像是真的</label>
+            <div id="answers">
+            <input type="radio" name="q80" value="1"> 从无<br>
+            <input type="radio" name="q80" value="2"> 轻度<br>
+            <input type="radio" name="q80" value="3"> 中度<br>
+            <input type="radio" name="q80" value="4"> 偏重<br>
+            <input type="radio" name="q80" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>81. 大叫或摔东西</label>
+            <div id="answers">
+            <input type="radio" name="q81" value="1"> 从无<br>
+            <input type="radio" name="q81" value="2"> 轻度<br>
+            <input type="radio" name="q81" value="3"> 中度<br>
+            <input type="radio" name="q81" value="4"> 偏重<br>
+            <input type="radio" name="q81" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>82. 害怕会在公共场合昏倒</label>
+            <div id="answers">
+            <input type="radio" name="q82" value="1"> 从无<br>
+            <input type="radio" name="q82" value="2"> 轻度<br>
+            <input type="radio" name="q82" value="3"> 中度<br>
+            <input type="radio" name="q82" value="4"> 偏重<br>
+            <input type="radio" name="q82" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>83. 感到别人想占您的便宜</label>
+            <div id="answers">
+            <input type="radio" name="q83" value="1"> 从无<br>
+            <input type="radio" name="q83" value="2"> 轻度<br>
+            <input type="radio" name="q83" value="3"> 中度<br>
+            <input type="radio" name="q83" value="4"> 偏重<br>
+            <input type="radio" name="q83" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>84. 为一些有关“性”的想法而很苦恼</label>
+            <div id="answers">
+            <input type="radio" name="q84" value="1"> 从无<br>
+            <input type="radio" name="q84" value="2"> 轻度<br>
+            <input type="radio" name="q84" value="3"> 中度<br>
+            <input type="radio" name="q84" value="4"> 偏重<br>
+            <input type="radio" name="q84" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>85. 您认为应该因为自己的过错而受到惩罚</label>
+            <div id="answers">
+            <input type="radio" name="q85" value="1"> 从无<br>
+            <input type="radio" name="q85" value="2"> 轻度<br>
+            <input type="radio" name="q85" value="3"> 中度<br>
+            <input type="radio" name="q85" value="4"> 偏重<br>
+            <input type="radio" name="q85" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>86. 感到要赶快把事情做完</label>
+            <div id="answers">
+            <input type="radio" name="q86" value="1"> 从无<br>
+            <input type="radio" name="q86" value="2"> 轻度<br>
+            <input type="radio" name="q86" value="3"> 中度<br>
+            <input type="radio" name="q86" value="4"> 偏重<br>
+            <input type="radio" name="q86" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>87. 感到自己的身体有严重问题</label>
+            <div id="answers">
+            <input type="radio" name="q87" value="1"> 从无<br>
+            <input type="radio" name="q87" value="2"> 轻度<br>
+            <input type="radio" name="q87" value="3"> 中度<br>
+            <input type="radio" name="q87" value="4"> 偏重<br>
+            <input type="radio" name="q87" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>88. 从未感到和其他人很亲近</label>
+            <div id="answers">
+            <input type="radio" name="q88" value="1"> 从无<br>
+            <input type="radio" name="q88" value="2"> 轻度<br>
+            <input type="radio" name="q88" value="3"> 中度<br>
+            <input type="radio" name="q88" value="4"> 偏重<br>
+            <input type="radio" name="q88" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>89. 感到自己有罪</label>
+            <div id="answers">
+            <input type="radio" name="q89" value="1"> 从无<br>
+            <input type="radio" name="q89" value="2"> 轻度<br>
+            <input type="radio" name="q89" value="3"> 中度<br>
+            <input type="radio" name="q89" value="4"> 偏重<br>
+            <input type="radio" name="q89" value="5">  严重<br>
+            </div>
+        </div>
+        <div class="question">
+            <label>90. 感到自己的脑子有毛病</label>
+            <div id="answers">
+            <input type="radio" name="q90" value="1"> 从无<br>
+            <input type="radio" name="q90" value="2"> 轻度<br>
+            <input type="radio" name="q90" value="3"> 中度<br>
+            <input type="radio" name="q90" value="4"> 偏重<br>
+            <input type="radio" name="q90" value="5">  严重<br>
+            </div>
+        </div>
+        <button type="button" onclick="calculateScore()">提交</button>
+    </form>
+    <div id="result"></div>
+    <script>
+        function calculateScore() {
+            const form = document.getElementById('scl90Form');
+            let score = 0;
+            for (let i = 1; i <= 90; i++) {
+                const question = `q${i}`;
+                const selectedOption = form.querySelector(`input[name="${question}"]:checked`);
+                if (selectedOption) {
+                    score += parseInt(selectedOption.value);
+                } else {
+                    alert(`请回答问题 ${i}`);
+                    return;
+                }
+            }
+            let assessment = '';
+            if (score <= 160) {
+                assessment = '你的心理健康状况良好，目前没有明显的心理症状困扰。建议继续保持健康的生活方式和积极的心态。';
+            } else if (score <= 200) {
+                assessment = '你可能存在一些轻微的心理症状，不过不用过于担心。可以尝试通过适当的放松活动，如运动、听音乐等来缓解。';
+            } else if (score <= 250) {
+                assessment = '你目前的心理状态可能存在一定程度的问题，建议你多关注自己的情绪变化，也可以与身边信任的人交流沟通。若情况持续或加重，建议寻求专业心理咨询师的帮助。';
+            } else {
+                assessment = '你可能存在较为严重的心理症状，建议尽快寻求专业心理咨询师或心理医生的帮助，以便进行更详细的评估和诊断。';
+            }
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = `你的得分是：${score} 分。<br>${assessment}`;
+        }
+    </script>
+</body>
+
+</html>
+    
+			

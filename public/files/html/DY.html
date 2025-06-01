@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>电影精选</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            900: '#0c4a6e'
+                        },
+                        accent: {
+                            50: '#fdf2f8',
+                            100: '#fce7f3',
+                            200: '#fbcfe8',
+                            300: '#f9a8d4',
+                            400: '#f472b6',
+                            500: '#ec4899',
+                            600: '#db2777'
+                        },
+                        warm: {
+                            50: '#fef7ee',
+                            100: '#fdedd3',
+                            200: '#fed7aa',
+                            300: '#fdba74'
+                        },
+                        dark: '#1e293b',
+                        light: '#f8fafc'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'scale-in': 'scaleIn 0.3s ease-out',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'shimmer': 'shimmer 2s linear infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(100px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        },
+                        scaleIn: {
+                            '0%': { transform: 'scale(0.9)', opacity: '0' },
+                            '100%': { transform: 'scale(1)', opacity: '1' }
+                        },
+                        glow: {
+                            '0%': { boxShadow: '0 0 20px rgba(59, 130, 246, 0.5)' },
+                            '100%': { boxShadow: '0 0 30px rgba(59, 130, 246, 0.8)' }
+                        },
+                        shimmer: {
+                            '0%': { transform: 'translateX(-100%)' },
+                            '100%': { transform: 'translateX(100%)' }
+                        }
+                    },
+                    backdropBlur: {
+                        xs: '2px',
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .home-btn {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                padding: 12px 24px;
+                background: rgba(255, 255, 255, 0.1);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                border-radius: 50px;
+                color: #fff;
+                text-decoration: none;
+                font-weight: 600;
+                font-size: 16px;
+                transition: all 0.3s ease;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+                top:2.5rem;
+                left:3rem;
+                position: fixed;
+            }
+
+            .home-btn:hover {
+                background: rgba(255, 255, 255, 0.2);
+                transform: translateY(-2px);
+                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            }
+
+            .home-btn::before {
+                content: "←";
+                font-size: 16px;
+                font-weight: bold;
+            }
+            .glass {
+                background: rgba(248, 250, 252, 0.8);
+                backdrop-filter: blur(12px);
+                border: 1px solid rgba(186, 230, 253, 0.4);
+                box-shadow: 0 8px 32px rgba(14, 165, 233, 0.1);
+            }
+            .glass-card {
+                background: rgba(255, 255, 255, 0.9);
+                backdrop-filter: blur(12px);
+                border: 1px solid rgba(186, 230, 253, 0.3);
+                box-shadow: 0 10px 40px rgba(14, 165, 233, 0.08);
+            }
+            .glass-dark {
+                background: rgba(255, 255, 255, 0.85);
+                backdrop-filter: blur(12px);
+                border: 1px solid rgba(186, 230, 253, 0.2);
+                box-shadow: 0 15px 50px rgba(14, 165, 233, 0.12);
+            }
+            .gradient-text {
+                background: linear-gradient(135deg, #b4d3e1 0%, #ebc9da 50%, #d0bdd5 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+            .gradient-border {
+                background: linear-gradient(135deg,  #b4d3e1 0%, #efd1e0 50%, #dfb3eb 100%);
+                padding: 2px;
+                border-radius: 1rem;
+                background-size: 300% 300%;
+                animation: gradient-shift 4s ease infinite;
+            }
+            @keyframes gradient-shift {
+                0%, 100% { background-position: 0% 50%; }
+                50% { background-position: 100% 50%; }
+            }
+            .gradient-border-content {
+                background: white;
+                border-radius: calc(1rem - 2px);
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(14, 165, 233, 0.15);
+            }
+            .text-shadow-lg {
+                text-shadow: 0 4px 8px rgba(152, 203, 227, 0.2);
+            }
+            .hover-lift {
+                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+            .hover-lift:hover {
+                transform: translateY(-12px) scale(1.02);
+                box-shadow: 0 25px 50px #c3e8fa;
+            }
+            .btn-gradient {
+                background: linear-gradient(135deg, #c3e8fa 0%, #d1d6f1 100%);
+                position: relative;
+                overflow: hidden;
+                transition: all 0.3s ease;
+                box-shadow: 0 8px 25px #c3e8fa;
+            }
+            .btn-gradient:hover {
+                background: linear-gradient(135deg,  #f1d1e1 0%, #c3e8fa 100%);
+                transform: translateY(-2px);
+                box-shadow: 0 12px 35px #f1d1e1;
+            }
+            .btn-gradient::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+                transition: left 0.5s;
+            }
+            .btn-gradient:hover::before {
+                left: 100%;
+            }
+            .shimmer {
+                position: relative;
+                overflow: hidden;
+            }
+            .shimmer::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, transparent, rgba(186, 230, 253, 0.6), transparent);
+                animation: shimmer 2s infinite;
+            }
+            .card-hover {
+                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+            .card-hover:hover {
+                transform: translateY(-8px) rotateY(5deg);
+                box-shadow: 0 20px 40px rgba(14, 165, 233, 0.15);
+            }
+        }
+    </style>
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-[#f4e5f0] via-[#f9f1f7] to-[#e8f9ff] relative overflow-x-hidden">
+    <!-- 动态背景装饰 -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+        <!-- 星空效果 -->
+        <div class="absolute inset-0">
+            <div class="w-1 h-1 bg-white rounded-full absolute top-20 left-20 animate-pulse"></div>
+            <div class="w-1 h-1 bg-white rounded-full absolute top-40 right-32 animate-pulse"
+                style="animation-delay: 1s;"></div>
+            <div class="w-0.5 h-0.5 bg-white rounded-full absolute bottom-40 left-32 animate-pulse"
+                style="animation-delay: 2s;"></div>
+            <div class="w-1 h-1 bg-white rounded-full absolute bottom-60 right-20 animate-pulse"
+                style="animation-delay: 3s;"></div>
+            <div class="w-0.5 h-0.5 bg-white rounded-full absolute top-60 left-1/2 animate-pulse"
+                style="animation-delay: 4s;"></div>
+            <div class="w-1 h-1 bg-white rounded-full absolute top-32 left-3/4 animate-pulse"
+                style="animation-delay: 2.5s;"></div>
+        </div>
+    </div>
+    <h2><a href="../../index.php" class="home-btn">Home</a></h2>
+    <!-- 主内容区 -->
+    <main class="pt-10 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10">
+        <div class="mb-20 text-center animate-slide-up">
+            <div class="flex justify-center items-center space-x-6 flex-wrap gap-4">
+                <div class="glass px-6 py-3 rounded-2xl flex items-center space-x-2">
+
+                    <a href="music.html" class="text-gray-700 font-medium">⭐冥想</a>
+                </div>
+                <div class="glass px-6 py-3 rounded-2xl flex items-center space-x-2">
+
+                    <a href="#" class="text-gray-700 font-medium">❤️电影</a>
+                </div>
+                <div class="glass px-6 py-3 rounded-2xl flex items-center space-x-2">
+
+                    <a href="youxi.html" class="text-gray-700 font-medium">🪐游戏</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 加载状态 -->
+        <div id="loading"
+            class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50">
+            <div class="glass-dark p-10 rounded-3xl shadow-2xl flex flex-col items-center animate-scale-in max-w-md">
+                <div class="relative w-20 h-20 mb-6">
+                    <div class="absolute inset-0 border-4 border-blue-500/20 rounded-full"></div>
+                    <div
+                        class="absolute inset-0 border-4 border-blue-500 border-t-transparent rounded-full animate-spin">
+                    </div>
+                    <div class="absolute inset-2 border-2 border-purple-500/20 rounded-full"></div>
+                    <div class="absolute inset-2 border-2 border-purple-500 border-t-transparent rounded-full animate-spin"
+                        style="animation-direction: reverse; animation-duration: 1.5s;"></div>
+                </div>
+                <p class="text-xl font-semibold text-gray-700 mb-2">正在加载精彩内容</p>
+                <p class="text-sm text-gray-600 text-center">为您精心挑选最值得观看的电影...</p>
+            </div>
+        </div>
+
+        <!-- 电影卡片网格 -->
+        <div id="movieGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <!-- 电影卡片将通过JavaScript动态生成 -->
+        </div>
+
+        <!-- 加载更多按钮 -->
+        <div class="mt-20 text-center">
+            <button id="loadMoreBtn"
+                class="group btn-gradient text-gray-700 font-semibold py-4 px-10 rounded-3xl flex items-center mx-auto space-x-3 shadow-2xl hover:shadow-blue-500/25 transition-all duration-300">
+                <span class="text-lg">探索更多经典</span>
+                <i class="fa fa-angle-down text-xl group-hover:translate-y-1 transition-transform duration-300"></i>
+            </button>
+        </div>
+    </main>
+
+    <!-- 电影详情模态框 -->
+    <div id="movieModal"
+        class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+        <div class="glass-dark rounded-3xl max-w-6xl w-full max-h-[90vh] overflow-auto animate-scale-in">
+            <div class="relative">
+                <button id="closeModal"
+                    class="absolute top-6 right-6 w-12 h-12 glass rounded-2xl flex items-center justify-center text-gray-700 hover:bg-white/20 transition-all duration-300 z-20 group">
+                    <i class="fa fa-times group-hover:rotate-90 transition-transform duration-300"></i>
+                </button>
+
+                <!-- 模态框头部背景 -->
+                <div class="h-80 md:h-96 relative overflow-hidden rounded-t-3xl">
+                    <img id="modalBackdrop" src="" alt="电影背景图" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                    <div class="absolute bottom-8 left-8 right-8 text-white">
+                        <h2 id="modalTitle" class="text-4xl md:text-5xl font-bold mb-6 text-shadow-lg"></h2>
+                        <div class="flex flex-wrap items-center gap-4 mb-6">
+                            <span id="modalYear"
+                                class="glass px-4 py-2 text-sm rounded-xl font-medium text-gray-700"></span>
+                            <span id="modalDuration"
+                                class="glass px-4 py-2 text-sm rounded-xl font-medium text-gray-700"></span>
+                            <span id="modalGenre"
+                                class="glass px-4 py-2 text-sm rounded-xl font-medium text-gray-700"></span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="flex space-x-1">
+                                <i class="fa fa-star text-yellow-400 text-lg"></i>
+                                <i class="fa fa-star text-yellow-400 text-lg"></i>
+                                <i class="fa fa-star text-yellow-400 text-lg"></i>
+                                <i class="fa fa-star text-yellow-400 text-lg"></i>
+                                <i class="fa fa-star-half-o text-yellow-400 text-lg"></i>
+                            </div>
+                            <span id="modalRating" class="text-xl font-bold"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 模态框内容 -->
+                <div class="p-8">
+                    <div class="flex flex-col xl:flex-row gap-10">
+                        <div class="xl:w-1/3">
+                            <div class="gradient-border">
+                                <div class="gradient-border-content p-2">
+                                    <img id="modalPoster" src="" alt="电影海报" class="w-full rounded-xl shadow-2xl">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="xl:w-2/3 space-y-8">
+                            <!-- 剧情简介 -->
+                            <div class="glass p-8 rounded-3xl">
+                                <h3 class="text-2xl font-bold mb-6 text-gray-800 flex items-center">
+                                    <div
+                                        class="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center mr-3">
+                                        <i class="fa fa-file-text-o text-white"></i>
+                                    </div>
+                                    剧情简介
+                                </h3>
+                                <p id="modalDescription" class="text-gray-600 leading-relaxed text-lg"></p>
+                            </div>
+
+                            <!-- 导演和主演信息 -->
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div class="glass p-6 rounded-2xl">
+                                    <h3 class="text-xl font-bold mb-4 text-gray-800 flex items-center">
+                                        <div
+                                            class="w-6 h-6 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-lg flex items-center justify-center mr-3">
+                                            <i class="fa fa-user text-white text-sm"></i>
+                                        </div>
+                                        导演
+                                    </h3>
+                                    <p id="modalDirector" class="text-gray-600 text-lg"></p>
+                                </div>
+
+                                <div class="glass p-6 rounded-2xl">
+                                    <h3 class="text-xl font-bold mb-4 text-gray-800 flex items-center">
+                                        <div
+                                            class="w-6 h-6 bg-gradient-to-r from-green-400 to-blue-500 rounded-lg flex items-center justify-center mr-3">
+                                            <i class="fa fa-users text-white text-sm"></i>
+                                        </div>
+                                        主演
+                                    </h3>
+                                    <p id="modalCast" class="text-gray-600 text-lg"></p>
+                                </div>
+                            </div>
+
+                            <!-- 操作按钮 -->
+                            <div class="flex flex-wrap gap-4 pt-6">
+                                <button
+                                    class="btn-gradient text-gray-700 font-semibold py-4 px-8 rounded-2xl flex items-center space-x-3 shadow-xl flex-1 min-w-fit">
+                                    <i class="fa fa-play-circle text-xl"></i>
+                                    <span>观看预告片</span>
+                                </button>
+                                <button
+                                    class="glass text-gray-700 font-semibold py-4 px-8 rounded-2xl flex items-center space-x-3 hover:bg-white/20 transition-colors flex-1 min-w-fit">
+                                    <i class="fa fa-heart-o text-xl"></i>
+                                    <span>添加收藏</span>
+                                </button>
+                                <button
+                                    class="glass text-gray-700 font-semibold py-4 px-8 rounded-2xl flex items-center space-x-3 hover:bg-white/20 transition-colors">
+                                    <i class="fa fa-share text-xl"></i>
+                                    <span>分享</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 存储所有电影数据（全局变量）
+        let allMovies = [];
+        // 当前显示的电影片段
+        let currentDisplayedMovies = [];
+        // 当前页码
+        let currentPage = 1;
+        // 每页显示数量
+        const moviesPerPage = 6;
+        // 总页数
+        let totalPages = 0;
+
+        // DOM元素
+        const movieGrid = document.getElementById('movieGrid');
+        const loadMoreBtn = document.getElementById('loadMoreBtn');
+        const loading = document.getElementById('loading');
+        const movieModal = document.getElementById('movieModal');
+        const closeModal = document.getElementById('closeModal');
+
+        // 图片工具函数
+        const ImageUtils = {
+            // 生成精美的电影占位图
+            generateFallbackUrl: (title, width = 300, height = 450) => {
+                // 温暖治愈色系
+                const styles = [
+                    `https://via.placeholder.com/${width}x${height}/bae6fd/374151?text=${encodeURIComponent(title)}`,
+                    `https://via.placeholder.com/${width}x${height}/fce7f3/374151?text=${encodeURIComponent(title)}`,
+                    `https://via.placeholder.com/${width}x${height}/fed7aa/374151?text=${encodeURIComponent(title)}`,
+                    `https://via.placeholder.com/${width}x${height}/e0f2fe/374151?text=${encodeURIComponent(title)}`,
+                    `https://via.placeholder.com/${width}x${height}/fbcfe8/374151?text=${encodeURIComponent(title)}`,
+                    `https://via.placeholder.com/${width}x${height}/fdedd3/374151?text=${encodeURIComponent(title)}`,
+                    `https://via.placeholder.com/${width}x${height}/f0f9ff/374151?text=${encodeURIComponent(title)}`,
+                    `https://via.placeholder.com/${width}x${height}/fdf2f8/374151?text=${encodeURIComponent(title)}`,
+                    // 备用服务
+                    `https://dummyimage.com/${width}x${height}/bae6fd/374151&text=${encodeURIComponent(title)}`,
+                    `https://dummyimage.com/${width}x${height}/fce7f3/374151&text=${encodeURIComponent(title)}`
+                ];
+
+                // 根据电影标题选择固定的样式
+                const titleHash = title.split('').reduce((a, b) => {
+                    a = ((a << 5) - a) + b.charCodeAt(0);
+                    return a & a;
+                }, 0);
+
+                return styles[Math.abs(titleHash) % styles.length];
+            },
+
+            // 尝试代理图片URL（绕过防盗链）
+            proxyImageUrl: (originalUrl) => {
+                if (!originalUrl) return null;
+
+                const proxies = [
+                    `https://images.weserv.nl/?url=${encodeURIComponent(originalUrl)}`,
+                    `https://imageproxy.pimg.tw/resize?url=${encodeURIComponent(originalUrl)}`,
+                    originalUrl
+                ];
+
+                return proxies;
+            },
+
+            // 验证图片URL是否有效
+            validateImageUrl: (url) => {
+                return new Promise((resolve) => {
+                    if (!url) {
+                        resolve(false);
+                        return;
+                    }
+
+                    const img = new Image();
+                    img.onload = () => resolve(true);
+                    img.onerror = () => resolve(false);
+                    img.src = url;
+
+                    setTimeout(() => resolve(false), 5000);
+                });
+            }
+        };
+
+        // 智能图片加载器
+        function createSmartImage(src, alt, className = '', fallbackTitle = '') {
+            const container = document.createElement('div');
+            container.className = className;
+
+            // 创建时尚的加载占位符
+            const placeholder = document.createElement('div');
+            placeholder.className = `${className} glass flex items-center justify-center text-gray-600`;
+            placeholder.innerHTML = `
+                <div class="text-center p-8">
+                    <div class="relative w-16 h-16 mx-auto mb-4">
+                        <div class="absolute inset-0 border-4 border-blue-200 rounded-full"></div>
+                        <div class="absolute inset-0 border-4 border-blue-400 border-t-transparent rounded-full animate-spin"></div>
+                        <div class="absolute inset-2 border-2 border-pink-200 rounded-full"></div>
+                        <div class="absolute inset-2 border-2 border-pink-400 border-t-transparent rounded-full animate-spin" style="animation-direction: reverse;"></div>
+                    </div>
+                    <div class="text-lg font-medium">${fallbackTitle || '加载中...'}</div>
+                    <div class="text-sm text-gray-500 mt-1">正在为您准备精美图片</div>
+                </div>
+            `;
+
+            container.appendChild(placeholder);
+
+            // 异步加载图片
+            const loadImage = async () => {
+                let imageLoaded = false;
+
+                // 如果有原始URL，尝试代理URL
+                if (src) {
+                    const proxyUrls = ImageUtils.proxyImageUrl(src);
+
+                    for (const url of proxyUrls) {
+                        try {
+                            const isValid = await ImageUtils.validateImageUrl(url);
+                            if (isValid) {
+                                const img = document.createElement('img');
+                                img.src = url;
+                                img.alt = alt;
+                                img.className = className.replace('glass', '');
+                                img.style.opacity = '0';
+                                img.style.transition = 'opacity 0.5s ease';
+
+                                img.onload = () => {
+                                    container.innerHTML = '';
+                                    container.appendChild(img);
+                                    setTimeout(() => img.style.opacity = '1', 50);
+                                };
+
+                                imageLoaded = true;
+                                break;
+                            }
+                        } catch (error) {
+                            console.warn('图片加载失败:', url, error);
+                        }
+                    }
+                }
+
+                // 如果所有方法都失败，使用备用图片
+                if (!imageLoaded) {
+                    const fallbackUrl = ImageUtils.generateFallbackUrl(
+                        fallbackTitle || alt || '电影海报'
+                    );
+
+                    const img = document.createElement('img');
+                    img.src = fallbackUrl;
+                    img.alt = alt;
+                    img.className = className.replace('glass', '');
+                    img.style.opacity = '0';
+                    img.style.transition = 'opacity 0.5s ease';
+
+                    img.onload = () => {
+                        container.innerHTML = '';
+                        container.appendChild(img);
+                        setTimeout(() => img.style.opacity = '1', 50);
+                    };
+                }
+            };
+
+            // 开始加载
+            loadImage();
+
+            return container;
+        }
+
+        // 读取JSON数据
+        function readLocalJsonData() {
+            return new Promise((resolve, reject) => {
+                fetch('豆瓣电影.json')
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('网络响应失败: ' + response.status);
+                        }
+                        return response.json();
+                    })
+                    .then(data => resolve(data))
+                    .catch(error => {
+                        console.error('读取数据失败:', error);
+                        reject(error);
+                    });
+            });
+        }
+
+        // 数据处理函数
+        function processData(moviesData) {
+            return moviesData.map(movie => {
+                // 处理主演列表
+                const actors = movie.actor ? movie.actor.split('/').join('，') : '未知';
+
+                // 处理导演列表
+                const directors = movie.director ? movie.director.split('/').join('，') : '未知';
+
+                // 处理类型列表
+                const genres = movie.type ? movie.type.split('/').join(' / ') : '未知';
+
+                // 处理年份
+                const yearMatch = movie.year ? movie.year.match(/\d{4}/) : null;
+                const year = yearMatch ? yearMatch[0] : '未知';
+
+                // 处理简介，限制长度
+                const summary = movie.summary || '暂无简介';
+
+                return {
+                    id: movie.id || Date.now(),
+                    title: movie.title.split('/')[0].trim(),
+                    year: year,
+                    duration: movie.duration || '未知',
+                    genre: genres,
+                    rating: movie.score ? parseFloat(movie.score).toFixed(1) : '0.0',
+                    poster: movie.poster || null,
+                    backdrop: movie.poster || null,
+                    description: summary,
+                    director: directors,
+                    actor: actors
+                };
+            });
+        }
+
+        // 渲染电影卡片
+        function renderMovies(movies) {
+            movieGrid.innerHTML = '';
+
+            if (movies.length === 0) {
+                movieGrid.innerHTML = `
+                <div class="col-span-full text-center py-24">
+                    <div class="glass-dark p-16 rounded-3xl max-w-lg mx-auto">
+                        <div class="relative w-24 h-24 mx-auto mb-8">
+                            <i class="fa fa-film text-6xl text-gray-400"></i>
+                        </div>
+                        <p class="text-gray-600 text-xl mb-4">暂无电影数据</p>
+                        <p class="text-gray-500">请稍后再试或检查网络连接</p>
+                    </div>
+                </div>
+            `;
+                return;
+            }
+
+            movies.forEach((movie, index) => {
+                const card = document.createElement('div');
+                card.className = 'group glass-card rounded-3xl overflow-hidden card-hover cursor-pointer animate-slide-up shadow-xl';
+                card.style.animationDelay = `${index * 0.15}s`;
+                card.dataset.movieId = movie.id;
+
+                // 创建卡片内容
+                const cardContent = document.createElement('div');
+                cardContent.innerHTML = `
+                <div class="relative h-72 overflow-hidden">
+                    <!-- 评分标签 -->
+                    <div class="absolute top-4 right-4 glass px-3 py-2 rounded-xl z-20 group-hover:scale-110 transition-transform duration-300 backdrop-blur-xl">
+                        <div class="flex items-center space-x-1">
+                            <span class="text-gray-700 font-bold text-lg">${movie.rating}</span>
+                            <i class="fa fa-star text-yellow-500"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- 渐变遮罩 -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10"></div>
+                    
+                    <!-- 播放按钮 -->
+                    <button class="play-btn absolute inset-0 m-auto w-20 h-20 glass rounded-full flex items-center justify-center transition-all duration-300 opacity-0 group-hover:opacity-100 transform scale-75 group-hover:scale-100 z-20 hover:bg-gray-100">
+                        <i class="fa fa-play text-gray-600 text-2xl ml-1"></i>
+                    </button>
+                    
+                    <!-- 电影信息悬浮层 -->
+                    <div class="absolute bottom-4 left-4 right-4 text-white z-15 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                        <h4 class="font-bold text-lg mb-1 text-shadow">${movie.title}</h4>
+                        <p class="text-sm text-gray-200">${movie.year} · ${movie.duration}</p>
+                    </div>
+                </div>
+                
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="font-bold text-xl text-gray-800 group-hover:text-blue-600 transition-colors duration-300 line-clamp-2">${movie.title}</h3>
+                        <span class="text-sm text-gray-500 bg-gray-100 px-3 py-1 rounded-lg flex-shrink-0 ml-2">${movie.year}</span>
+                    </div>
+                    
+                    <!-- 类型标签 -->
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        ${movie.genre.split(' / ').slice(0, 3).map(genre =>
+                    `<span class="text-xs px-3 py-1 bg-gradient-to-r from-blue-500/10 to-purple-500/10 text-blue-600 rounded-full border border-blue-200">${genre}</span>`
+                ).join('')}
+                    </div>
+                    
+                    <!-- 简介 -->
+                    <p class="text-sm text-gray-600 line-clamp-3 mb-6 leading-relaxed">
+                        ${movie.description.length > 150
+                        ? movie.description.substring(0, 150) + '...'
+                        : movie.description}
+                    </p>
+                    
+                    <!-- 底部操作区 -->
+                    <div class="flex justify-between items-center pt-4 border-t border-gray-100">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                            <span class="text-xs text-gray-500 font-medium">豆瓣精选</span>
+                        </div>
+                        <button class="details-btn text-blue-600 hover:text-blue-700 text-sm font-semibold flex items-center space-x-1 group/btn bg-blue-50 hover:bg-blue-100 px-3 py-2 rounded-lg transition-all duration-300">
+                            <span>查看详情</span>
+                            <i class="fa fa-arrow-right group-hover/btn:translate-x-1 transition-transform duration-300"></i>
+                        </button>
+                    </div>
+                </div>
+            `;
+
+                // 插入智能图片到相对容器中
+                const imageContainer = cardContent.querySelector('.relative');
+                const smartImage = createSmartImage(
+                    movie.poster,
+                    `${movie.title}海报`,
+                    'w-full h-full object-cover transition-transform duration-700 group-hover:scale-110',
+                    movie.title
+                );
+                imageContainer.insertBefore(smartImage, imageContainer.firstChild);
+
+                card.appendChild(cardContent);
+                movieGrid.appendChild(card);
+
+                // 绑定点击事件
+                card.querySelectorAll('.play-btn, .details-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        showMovieDetails(movie);
+                    });
+                });
+
+                // 整个卡片点击事件
+                card.addEventListener('click', () => showMovieDetails(movie));
+            });
+        }
+
+        // 显示详情模态框
+        function showMovieDetails(movie) {
+            document.getElementById('modalTitle').textContent = movie.title;
+            document.getElementById('modalYear').textContent = movie.year;
+            document.getElementById('modalDuration').textContent = movie.duration;
+            document.getElementById('modalGenre').textContent = movie.genre;
+            document.getElementById('modalRating').textContent = `${movie.rating}/10`;
+            document.getElementById('modalDescription').textContent = movie.description;
+            document.getElementById('modalDirector').textContent = movie.director;
+            document.getElementById('modalCast').textContent = movie.actor;
+
+            // 为模态框图片添加智能加载
+            const modalPoster = document.getElementById('modalPoster');
+            const modalBackdrop = document.getElementById('modalBackdrop');
+
+            // 设置海报
+            modalPoster.style.opacity = '0';
+            modalPoster.src = ImageUtils.generateFallbackUrl(movie.title, 400, 600);
+            modalPoster.alt = `${movie.title}海报`;
+
+            // 设置背景图
+            modalBackdrop.style.opacity = '0';
+            modalBackdrop.src = ImageUtils.generateFallbackUrl(movie.title, 1200, 600);
+            modalBackdrop.alt = `${movie.title}背景图`;
+
+            // 尝试加载原始图片
+            if (movie.poster) {
+                const proxyUrls = ImageUtils.proxyImageUrl(movie.poster);
+
+                const tryLoadOriginal = async () => {
+                    for (const url of proxyUrls) {
+                        try {
+                            const isValid = await ImageUtils.validateImageUrl(url);
+                            if (isValid) {
+                                modalPoster.src = url;
+                                modalBackdrop.src = url;
+                                break;
+                            }
+                        } catch (error) {
+                            console.warn('模态框图片加载失败:', url);
+                        }
+                    }
+                };
+
+                tryLoadOriginal();
+            }
+
+            // 图片加载完成后显示
+            modalPoster.onload = () => {
+                modalPoster.style.opacity = '1';
+                modalPoster.style.transition = 'opacity 0.5s ease';
+            };
+
+            modalBackdrop.onload = () => {
+                modalBackdrop.style.opacity = '1';
+                modalBackdrop.style.transition = 'opacity 0.5s ease';
+            };
+
+            movieModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // 关闭模态框
+        function closeMovieModal() {
+            movieModal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // 加载所有数据
+        async function loadAllData() {
+            loading.classList.remove('hidden');
+            try {
+                const moviesData = await readLocalJsonData();
+                allMovies = processData(moviesData);
+                totalPages = Math.ceil(allMovies.length / moviesPerPage);
+                console.log(`成功加载 ${allMovies.length} 部电影，共 ${totalPages} 页`);
+                return allMovies;
+            } catch (error) {
+                console.error('加载数据失败:', error);
+
+                // 优雅的错误提示
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'fixed top-6 right-6 glass-dark p-6 rounded-2xl text-gray-700 z-50 animate-slide-up max-w-sm';
+                errorDiv.innerHTML = `
+                    <div class="flex items-start space-x-4">
+                        <div class="w-8 h-8 bg-red-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fa fa-exclamation-triangle text-white"></i>
+                        </div>
+                        <div>
+                            <p class="font-semibold mb-1">加载失败</p>
+                            <p class="text-sm text-gray-500">${error.message}</p>
+                        </div>
+                        <button onclick="this.parentElement.parentElement.remove()" class="text-gray-400 hover:text-gray-600 ml-auto">
+                            <i class="fa fa-times"></i>
+                        </button>
+                    </div>
+                `;
+                document.body.appendChild(errorDiv);
+                setTimeout(() => errorDiv.remove(), 6000);
+                return [];
+            } finally {
+                loading.classList.add('hidden');
+            }
+        }
+
+        // 渲染当前页电影
+        function renderCurrentPage() {
+            const start = (currentPage - 1) * moviesPerPage;
+            const end = start + moviesPerPage;
+            currentDisplayedMovies = allMovies.slice(start, end);
+            renderMovies(currentDisplayedMovies);
+            updateLoadMoreButton();
+        }
+
+        // 加载更多（下一页）
+        function loadMorePage() {
+            if (currentPage >= totalPages) {
+                console.log('已经是最后一页');
+                return;
+            }
+
+            currentPage++;
+            renderCurrentPage();
+        }
+
+        // 更新加载更多按钮状态
+        function updateLoadMoreButton() {
+            if (currentPage >= totalPages) {
+                loadMoreBtn.classList.add('hidden');
+            } else {
+                loadMoreBtn.classList.remove('hidden');
+            }
+        }
+
+        // 数组乱序函数
+        function shuffleArray(array) {
+            const newArray = [...array];
+            for (let i = newArray.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+            }
+            return newArray;
+        }
+
+        // 初始化
+        async function init() {
+            await loadAllData();
+
+            if (allMovies.length > 0) {
+                // 随机排序初始数据
+                allMovies = shuffleArray(allMovies);
+                renderCurrentPage();
+            } else {
+                renderMovies([]);
+                loadMoreBtn.classList.add('hidden');
+            }
+
+            // 绑定事件
+            loadMoreBtn.addEventListener('click', loadMorePage);
+            closeModal.addEventListener('click', closeMovieModal);
+
+            // 点击模态框背景关闭
+            movieModal.addEventListener('click', (e) => {
+                if (e.target === movieModal) {
+                    closeMovieModal();
+                }
+            });
+
+            // ESC键关闭模态框
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !movieModal.classList.contains('hidden')) {
+                    closeMovieModal();
+                }
+            });
+        }
+
+        // 启动应用
+        init();
+    </script>
+</body>
+
+</html>

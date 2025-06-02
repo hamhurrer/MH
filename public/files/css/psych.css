@@ -23,7 +23,7 @@ section {
   padding: 3rem 9%;
 }
 .heading {
-  background: url(" ../image/tyh2.png") no-repeat;
+  background: url(" ../image_webp/tyh2.webp") no-repeat;
   background-size: cover;
   background-position: center;
   text-align: center;
@@ -451,32 +451,32 @@ section {
 }
 #a{
   
-  background: url("../image/f2.jpg");
+  background: url("../image_webp/f2.webp");
   background-size:1000px 500px;
   background-position: 0px 0px;
 }
 #b{
-  background: url("../image/f2.jpg");
+  background: url("../image_webp/f2.webp");
   background-size:1000px 500px;
   background-position: 0px 300px;
 }
 #c{
-  background: url("../image/f2.jpg");
+  background: url("../image_webp/f2.webp");
   background-size:1000px 500px;
   background-position: 50% 0%;
 }
 #d{
-  background: url("../image/f2.jpg");
+  background: url("../image_webp/f2.webp");
   background-size:1000px 500px;
   background-position: 50% 100%;
 }
 #e{
-  background: url("../image/f2.jpg");
+  background: url("../image_webp/f2.webp");
   background-size:1000px 500px;
   background-position: 100% 20%;
 }
 #f{
-  background: url("../image/f2.jpg");
+  background: url("../image_webp/f2.webp");
   background-size:1000px 500px;
   background-position: 100% 100%;
 }

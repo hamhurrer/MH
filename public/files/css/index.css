@@ -511,7 +511,7 @@ html {
 
 
 .merged-container .merged-card.card1 {
-    background-image: url('../image/k2.jpg'); 
+    background-image: url('../image_webp/k2.webp'); 
     background-size: cover;
     background-position: center;
 }
@@ -542,7 +542,7 @@ html {
 
 /* 卡片 2 的样式 */
 .merged-container .merged-card.card2 {
-    background-image: url('../image/k1.jpg'); /* 替换为实际的图片路径 */
+    background-image: url('../image_webp/k1.webp'); /* 替换为实际的图片路径 */
     background-size: cover;
     background-position: center;
 }
@@ -574,7 +574,7 @@ html {
 
 /* 卡片 3 的样式 */
 .merged-container .merged-card.card3 {
-    background-image: url('../image/k4.jpg'); /* 替换为实际的图片路径 */
+    background-image: url('../image_webp/k4.webp'); /* 替换为实际的图片路径 */
     background-size: cover;
     background-position: center;
 }
@@ -605,7 +605,7 @@ html {
 
 /* 卡片 4 的样式 */
 .merged-container .merged-card.card4 {
-    background-image: url('../image/k5.jpg'); /* 替换为实际的图片路径 */
+    background-image: url('../image_webp/k5.webp'); /* 替换为实际的图片路径 */
     background-size: cover;
     background-position: center;
 }

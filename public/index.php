@@ -38,7 +38,7 @@ $isLoggedIn = isset($_SESSION['user_id']);
     <div class="nav">
         <div class="nav-wrapper">
             <div class="nav-logo">
-                <img src="files/image/logo.jpg" alt="Logo">
+                <img src="files/image_webp/logo.webp" alt="Logo">
             </div>
             <div class="nav-item">
                 <a href="#" class="alink">
@@ -232,12 +232,12 @@ $isLoggedIn = isset($_SESSION['user_id']);
     </div>
 </div>
         <section class="parallax">
-            <img src="./files/image/hill11.jpg" id="hill1" alt="">
-            <img src="./files/image/hill00.png" id="hill0" alt="">
-            <img src="./files/image/hill01.png"  id="h" alt="">
-            <img src="./files/image/star.png" id="star" alt="">
-            <img src="./files/image/hill4.png" id="hill4" alt="">
-            <img src="./files/image/hill5.png" id="hill5" alt="">       
+            <img src="./files/image_webp/hill11.webp" id="hill1" alt="">
+            <img src="./files/image_webp/hill00.webp" id="hill0" alt="">
+            <img src="./files/image_webp/hill01.webp"  id="h" alt="">
+            <img src="./files/image_webp/star.webp" id="star" alt="">
+            <img src="./files/image_webp/hill4.webp" id="hill4" alt="">
+            <img src="./files/image_webp/hill5.webp" id="hill5" alt="">       
             <h2 id="text" >MindHeaven Website</h2>
     	</section>
             <div style="padding: 2rem; background: #fff; min-height: 60vh;">
@@ -480,7 +480,6 @@ $isLoggedIn = isset($_SESSION['user_id']);
     <script src="./files/js/analysis.js"></script>
     <script src="./files/js/posts.js"></script>
     <script src="./files/js/ajax.js"></script>
-    <script src="./files/vanilla-tilt.js"></script>
         <div class="footer">
             <a href="https://beian.miit.gov.cn"><strong>&copy; 2025 MindHeaven. All rights reserved.     备案号：闽ICP备2025095319号</strong></font></a>
         </div> 

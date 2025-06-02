@@ -28,7 +28,7 @@ function renderPosts(posts) {
     posts.forEach(post => {
         const isOwnPost = post.user_id == currentUserId;
         // 处理帖子图片，如果没有图片则使用默认图片
-        const postImage ="./files/"+ post.post_image ?"./files/"+ post.post_image : './files/image/bg.jpg';
+        const postImage ="./files/"+ post.post_image ?"./files/"+ post.post_image : './files/image_webp/bg.webp';
                 // 处理标签显示
         let tagsHtml = '';
         if (post.tags && post.tags.trim()) {
@@ -43,7 +43,7 @@ function renderPosts(posts) {
             <div class="post-container" data-post-id="${post.id}">
                 <div class="flex space-x-4">
                     <div>
-                        <img src="${postImage}" class="user-avatar" alt="Post Image" onerror="this.src='./files/image/bg.jpg'">
+                        <img src="${postImage}" class="user-avatar" alt="Post Image" onerror="this.src='./files/image_webp/bg.webp'">
                     </div>
                     <div class="flex-1">
                         <p class="user-id">${post.username}</p>
@@ -78,7 +78,7 @@ function renderComments(comments) {
         return `
             <div class="comment-item" data-comment-id="${comment.id}">
                 <div>
-                    <img src="./files/image/bg.jpg" width="32" height="32" alt="User Avatar">
+                    <img src="./files/image_webp/bg.webp" width="32" height="32" alt="User Avatar">
                     <span>${comment.username}: ${comment.content}</span>
                 </div>
                 ${isOwnComment ? 

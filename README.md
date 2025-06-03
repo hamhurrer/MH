@@ -1,4 +1,4 @@
-### mindheaven 心屿;
+# mindheaven 心屿
 
 
 
@@ -8,7 +8,19 @@
 项目结构
 
 
-![image](https://github.com/user-attachments/assets/26436f39-fb04-4777-9933-f58beeb455c7);
+项目根目录
+├─ app                   # 应用核心目录（不直接暴露于Web访问）  
+│  ├─ .env              # 环境配置文件  
+│  └─ config             # 系统配置目录（如数据库、路由等）  
+└─ public                # Apache服务器根目录（Web访问入口）  
+   ├─ index.php          # 项目入口文件（接收所有请求）  
+   └─ files              # 公开资源目录（可访问的静态文件/业务文件）  
+      ├─ html            # HTML页面  
+      ├─ css             # CSS样式表  
+      ├─ js              # JavaScript文件  
+      ├─ php             # 可公开访问的PHP脚本（如API接口）  
+      ├─ image           # 图片资源目录  
+      └─ ...             # 其他资源目录（如字体、视频、文档等）  
 
 
 目录

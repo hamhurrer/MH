@@ -5,6 +5,12 @@
 **mindheaven 心屿** 致力于为失恋群体搭建专业且温暖的心理治愈平台。通过 AI 技术与多元功能结合，帮助用户释放情绪、了解自我，逐步走出失恋阴霾，重拾生活热情。
 
 
+项目结构
+
+
+![image](https://github.com/user-attachments/assets/26436f39-fb04-4777-9933-f58beeb455c7);
+
+
 目录
 
 
